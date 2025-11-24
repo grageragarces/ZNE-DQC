@@ -215,11 +215,12 @@ def apply_simple_zne_fallback(circuit: QuantumCircuit,
                                shots: int = 1024) -> float:
     """
     Simplified ZNE implementation that doesn't depend on Mitiq.
+    Uses conservative extrapolation to avoid wild swings.
     
     This is a basic implementation that:
     1. Scales noise by repeating gate sequences
     2. Collects expectation values at each scale
-    3. Performs linear extrapolation to zero noise
+    3. Performs linear extrapolation to zero noise with bounds
     
     Args:
         circuit: Quantum circuit
@@ -230,32 +231,66 @@ def apply_simple_zne_fallback(circuit: QuantumCircuit,
     Returns:
         Zero-noise extrapolated expectation value
     """
+    # Use fewer, more conservative scale factors if too many provided
+    if len(scale_factors) > 3:
+        scale_factors = [1.0, 1.5, 2.0]
+    
     expectations = []
     
     for scale in scale_factors:
-        # Simple noise scaling: just run with scaled noise model
-        # In a full implementation, we'd fold gates or use other scaling methods
-        
-        # For simplicity, we approximate by running the circuit multiple times
-        # and averaging (this simulates increased noise)
+        # Simple noise scaling by adding identity gates
         scaled_circuit = circuit.copy()
         
+        # Add extra identity operations to increase noise
+        if scale > 1.0:
+            extra_layers = int((scale - 1.0) * max(1, scaled_circuit.depth() // 2))
+            for _ in range(extra_layers):
+                for q in range(min(scaled_circuit.num_qubits, 4)):  # Limit to first 4 qubits
+                    # Add identity (X twice)
+                    scaled_circuit.x(q)
+                    scaled_circuit.x(q)
+        
         # Execute and collect expectation
-        counts = execute_circuit(scaled_circuit, noise_model=noise_model, shots=shots)
-        exp = calculate_expectation_value(counts)
-        expectations.append(exp)
+        try:
+            counts = execute_circuit(scaled_circuit, noise_model=noise_model, shots=shots)
+            exp = calculate_expectation_value(counts)
+            expectations.append(exp)
+        except Exception as e:
+            warnings.warn(f"Failed to execute at scale {scale}: {e}")
+            expectations.append(expectations[-1] if expectations else 0.0)
     
-    # Linear extrapolation to zero noise
-    # Fit: y = a + b*x, extrapolate to x=0
+    # Linear extrapolation to zero noise with safety bounds
     scale_factors_arr = np.array(scale_factors)
     expectations_arr = np.array(expectations)
     
     # Simple linear fit
     if len(scale_factors) >= 2:
-        # Use numpy polyfit for linear regression
-        coeffs = np.polyfit(scale_factors_arr, expectations_arr, 1)
-        # Extrapolate to scale=0
-        zne_result = coeffs[1]  # intercept (value at scale=0)
+        try:
+            # Use numpy polyfit for linear regression
+            coeffs = np.polyfit(scale_factors_arr, expectations_arr, 1)
+            # Extrapolate to scale=0
+            zne_result = coeffs[1]  # intercept (value at scale=0)
+            
+            # CRITICAL: Add safety bounds to prevent wild extrapolation
+            # Don't let ZNE move more than 2x the noise range
+            exp_range = max(expectations) - min(expectations)
+            exp_mean = np.mean(expectations)
+            max_deviation = 2 * max(exp_range, 0.1)  # At least 0.1 deviation allowed
+            
+            # Clip to reasonable bounds
+            zne_result = np.clip(zne_result, 
+                                exp_mean - max_deviation,
+                                exp_mean + max_deviation)
+            
+            # Additional safety: if ZNE moves away from noise-free direction, use noisy value
+            # Check if we're extrapolating in wrong direction (making error worse)
+            if abs(zne_result) > 2 * abs(expectations[0]):
+                warnings.warn("ZNE extrapolation too aggressive, using noisy value")
+                zne_result = expectations[0]
+                
+        except Exception as e:
+            warnings.warn(f"ZNE fitting failed: {e}. Using noisy value.")
+            zne_result = expectations[0]
     else:
         # Not enough points, return noisy result
         zne_result = expectations[0]
