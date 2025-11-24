@@ -11,6 +11,7 @@ import pandas as pd
 from typing import Dict, List, Tuple, Optional
 import time
 import warnings
+from partitioning import partitioning
 
 # Try to import mitiq, but provide fallback if it fails due to version issues
 try:
@@ -326,11 +327,9 @@ def run_simulation_experiment(circuit: QuantumCircuit,
     Returns:
         Dictionary with experiment results including num_partitions tested
     """
-    from partitioning import partitioning
     
     # Ensure valid number of partitions
     num_partitions_tested = min(num_partitions, circuit.num_qubits)
-    num_partitions_tested = max(1, num_partitions_tested)
     
     # Partition the circuit
     start_time = time.time()
