@@ -49,7 +49,7 @@ def circuit_to_graph(circuit: QuantumCircuit) -> Tuple[nx.Graph, List[Dict]]:
         if len(qubit_indices) == 2:
             q1, q2 = qubit_indices
             if not G.has_edge(q1, q2):
-                G[q1][q2]['gates'] = []
+                G.add_edge(q1, q2, gates=[])
             G[q1][q2]['gates'].append(gate_info)
     
     return G, all_gates
@@ -102,7 +102,10 @@ def partition_graph(G: nx.Graph, num_partitions: int = 2) -> Dict[int, int]:
     Partition graph into subcircuits.
     Returns mapping of qubit_idx -> partition_id
     
-    Uses spectral clustering or community detection.
+    Uses community detection and then splits/merges to get exact number of partitions.
+    
+    FIXED: Now actually creates the requested number of partitions by splitting
+    large communities when there are too few, not just merging when there are too many.
     """
     num_nodes = G.number_of_nodes()
     
@@ -118,6 +121,7 @@ def partition_graph(G: nx.Graph, num_partitions: int = 2) -> Dict[int, int]:
     # Use community detection for partitioning
     try:
         communities = list(nx.community.greedy_modularity_communities(G))
+        communities = [list(c) for c in communities]  # Convert sets to lists for splitting
         
         # If we got too many communities, merge smallest ones
         while len(communities) > num_partitions:
@@ -126,8 +130,27 @@ def partition_graph(G: nx.Graph, num_partitions: int = 2) -> Dict[int, int]:
             idx1 = sizes.index(min(sizes))
             sizes[idx1] = float('inf')
             idx2 = sizes.index(min(sizes))
-            communities[idx1] = communities[idx1].union(communities[idx2])
+            communities[idx1].extend(communities[idx2])
             communities.pop(idx2)
+        
+        # KEY FIX: If we have too few communities, split the largest ones
+        while len(communities) < num_partitions:
+            # Find largest community
+            sizes = [len(c) for c in communities]
+            largest_idx = sizes.index(max(sizes))
+            largest_comm = communities[largest_idx]
+            
+            if len(largest_comm) <= 1:
+                # Can't split further
+                break
+            
+            # Split the largest community roughly in half
+            mid = len(largest_comm) // 2
+            comm1 = largest_comm[:mid]
+            comm2 = largest_comm[mid:]
+            
+            communities[largest_idx] = comm1
+            communities.append(comm2)
         
         # Create partition map
         partition_map = {}
@@ -139,10 +162,22 @@ def partition_graph(G: nx.Graph, num_partitions: int = 2) -> Dict[int, int]:
         for q in range(num_nodes):
             if q not in partition_map:
                 partition_map[q] = 0
+        
+        # Verify we created the right number of partitions
+        actual_partitions = len(set(partition_map.values()))
+        if actual_partitions != num_partitions and num_partitions < num_nodes:
+            # If still not right, use fallback
+            raise ValueError("Community splitting didn't create correct number")
                 
     except:
-        # Fallback: simple round-robin
-        partition_map = {q: q % num_partitions for q in range(num_nodes)}
+        # Fallback: simple division into roughly equal parts
+        nodes = list(range(num_nodes))
+        partition_size = (num_nodes + num_partitions - 1) // num_partitions
+        
+        partition_map = {}
+        for i, node in enumerate(nodes):
+            partition_id = min(i // partition_size, num_partitions - 1)
+            partition_map[node] = partition_id
     
     return partition_map
 
@@ -396,7 +431,6 @@ def global_opt(circuit: QuantumCircuit, num_partitions: int = 2,
     """
     # Ensure valid number of partitions
     num_partitions = min(num_partitions, circuit.num_qubits)
-    num_partitions = max(1, num_partitions)
     
     # Step 1: Global optimization
     optimized_circuit = optimize_circuit(circuit)
@@ -442,7 +476,6 @@ def local_opt(circuit: QuantumCircuit, num_partitions: int = 2,
     """
     # Ensure valid number of partitions
     num_partitions = min(num_partitions, circuit.num_qubits)
-    num_partitions = max(1, num_partitions)
     
     # Step 1: Convert to graph
     G, all_gates = circuit_to_graph(circuit)
