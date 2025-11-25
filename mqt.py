@@ -5,6 +5,7 @@ Key improvements:
 2. Can resume from where it left off
 3. Better error handling for division by zero
 4. Progress tracking
+5. Filters out circuits that exceed simulator qubit limits
 """
 
 import os
@@ -115,12 +116,12 @@ def discover_mqt_circuits(mqt_folder: str = 'MQTBench',
             
             circuit_name = f"{origin}_{num_qubits}q"
             circuits_by_origin[origin].append((circuit, circuit_name, num_qubits))
-            print(f"    ✓ Loaded: {circuit_name}, depth={circuit.depth()}")
+            print(f"    LOADED: {circuit_name}, depth={circuit.depth()}")
     
     for origin_circuits in circuits_by_origin.values():
         circuits.extend(origin_circuits)
     
-    print(f"\n✓ Total circuits loaded: {len(circuits)}")
+    print(f"\nTotal circuits loaded: {len(circuits)}")
     print(f"  Origins: {list(circuits_by_origin.keys())}")
     if circuits:
         print(f"  Qubit range: {min(c[2] for c in circuits)} - {max(c[2] for c in circuits)}")
@@ -154,10 +155,15 @@ def run_mqt_bench_experiments_incremental(
     partition_counts: List[int] = None,
     shots: int = 512,
     output_file: str = 'mqt_results.csv',
-    progress_file: str = 'mqt_progress.json'
+    progress_file: str = 'mqt_progress.json',
+    simulator_qubit_limit: int = 31  # NEW: Add simulator limit
 ) -> pd.DataFrame:
     """
     Run experiments with incremental saving and resume capability.
+    
+    Args:
+        simulator_qubit_limit: Maximum qubits the simulator can handle (default 31)
+                              Circuits requiring more qubits after partitioning will be skipped
     """
     # Import the actual function from simulate.py
     from simulate import run_simulation_experiment
@@ -177,6 +183,7 @@ def run_mqt_bench_experiments_incremental(
     print("="*70)
     print("MQT BENCH ZNE PARTITIONING EXPERIMENTS (INCREMENTAL SAVE)")
     print("="*70)
+    print(f"Simulator qubit limit: {simulator_qubit_limit}")
     
     # Discover circuits
     print("\n1. DISCOVERING CIRCUITS")
@@ -194,17 +201,19 @@ def run_mqt_bench_experiments_incremental(
     
     # Load progress
     completed_experiments = load_progress(progress_file)
-    print(f"\n✓ Loaded progress: {len(completed_experiments)} experiments already completed")
+    print(f"\nLoaded progress: {len(completed_experiments)} experiments already completed")
     
     # Load existing results if they exist
     if os.path.exists(output_file):
         results_df = pd.read_csv(output_file)
-        print(f"✓ Loaded existing results: {len(results_df)} rows")
+        print(f"Loaded existing results: {len(results_df)} rows")
     else:
         results_df = pd.DataFrame()
     
     # Generate all experiment configurations
     experiments = []
+    skipped_experiments = []
+    
     for circuit, name, num_qubits in circuits_info:
         # Only test valid partition counts for this circuit
         valid_partitions = [p for p in partition_counts if p <= num_qubits]
@@ -216,7 +225,29 @@ def run_mqt_bench_experiments_incremental(
                 for comm_mult in comm_noise_multipliers:
                     for primitive in comm_primitives:
                         for parts in valid_partitions:
+                            # NEW: Check if this experiment will exceed simulator limits
+                            # For 'cat' primitive, additional qubits are added
+                            if primitive == 'cat':
+                                # Cat state adds extra qubits for communication
+                                estimated_qubits = num_qubits + (parts - 1) * 2  # Rough estimate
+                            else:  # teleportation
+                                estimated_qubits = num_qubits + (parts - 1) * 3  # Rough estimate
+                            
                             exp_id = f"{name}_{strategy}_{noise}_{comm_mult}_{primitive}_{parts}"
+                            
+                            # Skip if exceeds simulator limit
+                            if estimated_qubits > simulator_qubit_limit:
+                                if exp_id not in completed_experiments:
+                                    skipped_experiments.append({
+                                        'name': name,
+                                        'num_qubits': num_qubits,
+                                        'parts': parts,
+                                        'primitive': primitive,
+                                        'estimated_qubits': estimated_qubits,
+                                        'exp_id': exp_id
+                                    })
+                                continue
+                            
                             if exp_id not in completed_experiments:
                                 experiments.append({
                                     'circuit': circuit,
@@ -233,15 +264,28 @@ def run_mqt_bench_experiments_incremental(
     total_experiments = len(experiments) + len(completed_experiments)
     remaining = len(experiments)
     
-    print("\n2. RUNNING EXPERIMENTS")
+    print("\n2. EXPERIMENT PLANNING")
     print("-"*70)
-    print(f"Total experiments: {total_experiments}")
+    print(f"Total valid experiments: {total_experiments}")
     print(f"Already completed: {len(completed_experiments)}")
     print(f"Remaining: {remaining}")
-    print(f"Output file: {output_file}")
+    print(f"Skipped (exceeds {simulator_qubit_limit} qubit limit): {len(skipped_experiments)}")
+    
+    if skipped_experiments and len(skipped_experiments) <= 10:
+        print("\nSkipped experiments:")
+        for skip in skipped_experiments:
+            print(f"  - {skip['name']} with {skip['parts']} parts, {skip['primitive']}: "
+                  f"~{skip['estimated_qubits']} qubits > {simulator_qubit_limit} limit")
+    elif skipped_experiments:
+        print(f"\n(Too many to list - {len(skipped_experiments)} experiments skipped)")
+    
+    print(f"\nOutput file: {output_file}")
     print("")
     
     # Run experiments
+    print("\n3. RUNNING EXPERIMENTS")
+    print("-"*70)
+    
     for i, exp in enumerate(experiments, 1):
         exp_num = len(completed_experiments) + i
         print(f"Experiment {exp_num}/{total_experiments}: {exp['name']} ({exp['num_qubits']}q), "
@@ -261,6 +305,11 @@ def run_mqt_bench_experiments_incremental(
                 num_partitions=exp['parts']
             )
             
+            # Check if result contains division by zero indicators
+            if result and any(pd.isna(v) or v == float('inf') or v == float('-inf') 
+                            for k, v in result.items() if isinstance(v, (int, float))):
+                print(f"  WARNING: Result contains invalid values (NaN/inf)")
+            
             # Add to results
             result_df = pd.DataFrame([result])
             results_df = pd.concat([results_df, result_df], ignore_index=True)
@@ -272,18 +321,27 @@ def run_mqt_bench_experiments_incremental(
             completed_experiments.add(exp['exp_id'])
             save_progress(progress_file, completed_experiments)
             
-            print(f"  ✓ Saved (Total rows: {len(results_df)})")
+            print(f"  SUCCESS - Saved (Total rows: {len(results_df)})")
+            
+        except ZeroDivisionError as e:
+            print(f"  ERROR: Division by zero - {e}")
+            print(f"  This experiment likely failed due to uniform distribution output")
+            # Mark as completed to avoid retrying
+            completed_experiments.add(exp['exp_id'])
+            save_progress(progress_file, completed_experiments)
             
         except Exception as e:
-            print(f"  Error: {e}")
+            print(f"  ERROR: {e}")
             # Still mark as attempted to avoid infinite retries
             completed_experiments.add(exp['exp_id'])
             save_progress(progress_file, completed_experiments)
     
-    print("\n3. RESULTS SUMMARY")
-    print("-"*70)
-    print(f"✓ Experiments completed: {len(results_df)}")
-    print(f"✓ Results saved to: {output_file}")
+    print("\n" + "="*70)
+    print("4. RESULTS SUMMARY")
+    print("="*70)
+    print(f"Experiments completed: {len(results_df)}")
+    print(f"Results saved to: {output_file}")
+    print(f"Skipped (simulator limit): {len(skipped_experiments)}")
     
     if len(results_df) > 0:
         print(f"\nOrigins tested:")
@@ -297,35 +355,39 @@ def run_mqt_bench_experiments_incremental(
 if __name__ == "__main__":
     import sys
     
-    print("MQT Bench Circuit Experiment Runner (Incremental Save Version)")
+    print("MQT Bench Circuit Experiment Runner (Patched Version)")
     print("="*70)
     
-    if not os.path.exists('MQTBench'):
-        print("\n⚠️  MQTBench folder not found!")
+    folder = 'MQTBench_reduced'
+    if not os.path.exists(folder):
+        folder = 'MQTBench'
+    
+    if not os.path.exists(folder):
+        print("\nERROR: Neither 'MQTBench_reduced' nor 'MQTBench' folder found!")
         sys.exit(1)
     
-    # Resume the full experiment that was running
-    print("\nResuming full experiment with incremental saving...")
-    print("This version saves after each experiment and can be safely interrupted.")
+    print(f"Using folder: {folder}")
+    print("\nRunning experiment with simulator qubit limit protection...")
     
     df = run_mqt_bench_experiments_incremental(
-        mqt_folder='MQTBench',
-        min_qubits=4,
-        max_qubits=50,  # Reduced from 130 to avoid very large circuits
-        max_circuits_per_origin=3,
-        strategies=['global', 'local'],
-        noise_levels=[0.01, 0.02],
-        comm_noise_multipliers=[1.0, 1.05, 1.1, 1.2],
-        comm_primitives=['cat', 'teleportation'],
-        partition_counts=[2, 4, 6, 8, 10],
-        shots=1024,
-        output_file='mqt_full_results_recovered.csv',
-        progress_file='mqt_progress.json'
+        mqt_folder=folder,
+        min_qubits=2,
+        max_qubits=31,  # Stay within simulator limits
+        max_circuits_per_origin=10,
+        strategies=['local'],  # Just local for now
+        noise_levels=[0.001, 0.005, 0.01, 0.015, 0.02],
+        comm_noise_multipliers=[1.0, 1.1, 1.2],
+        comm_primitives=['cat'],
+        partition_counts=[2, 4],
+        shots=200,
+        output_file='results_patched.csv',
+        progress_file='progress_patched.json',
+        simulator_qubit_limit=31  # Explicitly set the limit
     )
     
     if len(df) > 0:
         print("\n" + "="*70)
-        print("EXPERIMENT STATUS")
+        print("FINAL STATUS")
         print("="*70)
-        print(f"✓ Total experiments saved: {len(df)}")
-        print(f"✓ Unique circuits: {df['origin'].nunique()}")
+        print(f"Total experiments saved: {len(df)}")
+        print(f"Unique circuits: {df['origin'].nunique()}")

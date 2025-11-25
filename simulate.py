@@ -12,15 +12,9 @@ from typing import Dict, List, Tuple, Optional
 import time
 import warnings
 from partitioning import partitioning
-
-# Try to import mitiq, but provide fallback if it fails due to version issues
-try:
-    from mitiq import zne
-    from mitiq.interface.mitiq_qiskit import qiskit_utils
-    MITIQ_AVAILABLE = True
-except ImportError as e:
-    warnings.warn(f"Mitiq import failed: {e}. ZNE will use simplified fallback implementation.")
-    MITIQ_AVAILABLE = False
+from mitiq import zne
+from mitiq.interface.mitiq_qiskit import qiskit_utils
+MITIQ_AVAILABLE = True
 
 
 def create_noise_model(local_noise_level: float = 0.01,
