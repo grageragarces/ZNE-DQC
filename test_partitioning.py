@@ -248,7 +248,7 @@ class TestSuite:
         partition_map = {0: 0, 1: 0, 2: 1, 3: 1}
         
         # Test both primitives
-        for primitive in ['cat', 'teleportation']:
+        for primitive in ['cat', 'tp']:
             final = reconnect_partitions(subcircuits, cut_edges, partition_map, primitive)
             
             self.test(final.num_qubits >= 4, 
@@ -295,7 +295,7 @@ class TestSuite:
         
         for strategy in ['global', 'local']:
             for num_parts in [2, 4]:
-                for primitive in ['cat', 'teleportation']:
+                for primitive in ['cat', 'tp']:
                     try:
                         result = partitioning(
                             qc, 

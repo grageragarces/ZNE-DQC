@@ -227,14 +227,14 @@ def create_cat_state_communication(qc: QuantumCircuit, q1: int, q2: int,
     qc.h(q1)
 
 
-def create_teleportation_communication(qc: QuantumCircuit, q1: int, q2: int,
+def create_tp_communication(qc: QuantumCircuit, q1: int, q2: int,
                                       gate_info: Dict) -> None:
     """
-    Replace two-qubit gate with teleportation communication primitive (simplified).
+    Replace two-qubit gate with tp communication primitive (simplified).
     
-    Approximates the teleportation protocol without actual measurements.
+    Approximates the tp protocol without actual measurements.
     """
-    # Teleportation setup
+    # tp setup
     qc.h(q1)
     qc.cx(q1, q2)
     
@@ -297,7 +297,7 @@ def extract_subcircuit(all_gates: List[Dict],
 def reconnect_partitions(subcircuits: List[QuantumCircuit], 
                         cut_edges: List[Tuple[int, int, Dict]],
                         partition_map: Dict[int, int],
-                        comm_primitive: str = 'cat') -> QuantumCircuit:
+                        comm_primitive: str = 'tp') -> QuantumCircuit:
     """
     Reconnect partitioned subcircuits using communication primitives.
     
@@ -305,7 +305,7 @@ def reconnect_partitions(subcircuits: List[QuantumCircuit],
         subcircuits: List of optimized subcircuits
         cut_edges: List of cut edges (q1, q2, gate_info)
         partition_map: Mapping of original qubits to partitions
-        comm_primitive: 'cat' or 'teleportation'
+        comm_primitive: 'cat' or 'tp'
     """
     # Determine total number of qubits needed
     total_qubits = sum(qc.num_qubits for qc in subcircuits)
@@ -378,8 +378,8 @@ def reconnect_partitions(subcircuits: List[QuantumCircuit],
                 final_circuit.cx(ancilla_q, new_q1)
                 final_circuit.h(ancilla_q)
                 
-            elif comm_primitive == 'teleportation':
-                # More complex teleportation with ancilla
+            elif comm_primitive == 'tp':
+                # More complex tp with ancilla
                 final_circuit.h(ancilla_q)
                 final_circuit.cx(ancilla_q, new_q1)
                 final_circuit.h(new_q1)
@@ -413,7 +413,7 @@ def reconnect_partitions(subcircuits: List[QuantumCircuit],
 
 
 def global_opt(circuit: QuantumCircuit, num_partitions: int = 2, 
-               comm_primitive: str = 'cat') -> QuantumCircuit:
+               comm_primitive: str = 'tp') -> QuantumCircuit:
     """
     Global optimization strategy:
     1. Optimize entire circuit first
@@ -424,7 +424,7 @@ def global_opt(circuit: QuantumCircuit, num_partitions: int = 2,
     Args:
         circuit: Input quantum circuit
         num_partitions: Number of partitions to create
-        comm_primitive: 'cat' or 'teleportation'
+        comm_primitive: 'cat' or 'tp'
     
     Returns:
         Partitioned and reconnected circuit
@@ -457,7 +457,7 @@ def global_opt(circuit: QuantumCircuit, num_partitions: int = 2,
 
 
 def local_opt(circuit: QuantumCircuit, num_partitions: int = 2,
-              comm_primitive: str = 'cat') -> QuantumCircuit:
+              comm_primitive: str = 'tp') -> QuantumCircuit:
     """
     Local optimization strategy:
     1. Convert circuit to graph
@@ -469,7 +469,7 @@ def local_opt(circuit: QuantumCircuit, num_partitions: int = 2,
     Args:
         circuit: Input quantum circuit
         num_partitions: Number of partitions to create
-        comm_primitive: 'cat' or 'teleportation'
+        comm_primitive: 'cat' or 'tp'
     
     Returns:
         Partitioned and reconnected circuit
@@ -503,7 +503,7 @@ def local_opt(circuit: QuantumCircuit, num_partitions: int = 2,
 
 
 def partitioning(circuit: QuantumCircuit, strategy: str = 'global',
-                num_partitions: int = 2, comm_primitive: str = 'cat') -> QuantumCircuit:
+                num_partitions: int = 2, comm_primitive: str = 'tp') -> QuantumCircuit:
     """
     Main partitioning function that routes to global or local optimization.
     
@@ -511,7 +511,7 @@ def partitioning(circuit: QuantumCircuit, strategy: str = 'global',
         circuit: Input quantum circuit
         strategy: 'global' or 'local' optimization strategy
         num_partitions: Number of partitions to create
-        comm_primitive: 'cat' or 'teleportation' communication primitive
+        comm_primitive: 'cat' or 'tp' communication primitive
     
     Returns:
         Partitioned circuit with communication primitives

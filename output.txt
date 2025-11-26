@@ -1,68 +1,68 @@
 
 Experiment 1/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.0x, cat, parts=2
 Experiment 2/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.0x, cat, parts=4
-Experiment 3/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.0x, teleportation, parts=2
-Experiment 4/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.0x, teleportation, parts=4
+Experiment 3/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.0x, tp, parts=2
+Experiment 4/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.0x, tp, parts=4
 Experiment 5/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.05x, cat, parts=2
 Experiment 6/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.05x, cat, parts=4
-Experiment 7/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.05x, teleportation, parts=2
-Experiment 8/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.05x, teleportation, parts=4
+Experiment 7/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.05x, tp, parts=2
+Experiment 8/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.05x, tp, parts=4
 Experiment 9/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.1x, cat, parts=2
 Experiment 10/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.1x, cat, parts=4
-Experiment 11/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.1x, teleportation, parts=2
-Experiment 12/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.1x, teleportation, parts=4
+Experiment 11/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.1x, tp, parts=2
+Experiment 12/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.1x, tp, parts=4
 Experiment 13/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.2x, cat, parts=2
 Experiment 14/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.2x, cat, parts=4
-Experiment 15/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.2x, teleportation, parts=2
-Experiment 16/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.2x, teleportation, parts=4
+Experiment 15/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.2x, tp, parts=2
+Experiment 16/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.01, comm=1.2x, tp, parts=4
 Experiment 17/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.0x, cat, parts=2
 Experiment 18/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.0x, cat, parts=4
-Experiment 19/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.0x, teleportation, parts=2
-Experiment 20/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.0x, teleportation, parts=4
+Experiment 19/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.0x, tp, parts=2
+Experiment 20/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.0x, tp, parts=4
 Experiment 21/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.05x, cat, parts=2
 Experiment 22/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.05x, cat, parts=4
-Experiment 23/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.05x, teleportation, parts=2
-Experiment 24/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.05x, teleportation, parts=4
+Experiment 23/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.05x, tp, parts=2
+Experiment 24/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.05x, tp, parts=4
 Experiment 25/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.1x, cat, parts=2
 Experiment 26/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.1x, cat, parts=4
-Experiment 27/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.1x, teleportation, parts=2
-Experiment 28/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.1x, teleportation, parts=4
+Experiment 27/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.1x, tp, parts=2
+Experiment 28/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.1x, tp, parts=4
 Experiment 29/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.2x, cat, parts=2
 Experiment 30/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.2x, cat, parts=4
-Experiment 31/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.2x, teleportation, parts=2
-Experiment 32/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.2x, teleportation, parts=4
+Experiment 31/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.2x, tp, parts=2
+Experiment 32/26240: graphstate_nativegates_ibm_opt0_4q (4q), global, noise=0.02, comm=1.2x, tp, parts=4
 Experiment 33/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.0x, cat, parts=2
 Experiment 34/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.0x, cat, parts=4
-Experiment 35/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.0x, teleportation, parts=2
-Experiment 36/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.0x, teleportation, parts=4
+Experiment 35/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.0x, tp, parts=2
+Experiment 36/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.0x, tp, parts=4
 Experiment 37/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.05x, cat, parts=2
 Experiment 38/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.05x, cat, parts=4
-Experiment 39/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.05x, teleportation, parts=2
-Experiment 40/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.05x, teleportation, parts=4
+Experiment 39/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.05x, tp, parts=2
+Experiment 40/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.05x, tp, parts=4
 Experiment 41/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.1x, cat, parts=2
 Experiment 42/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.1x, cat, parts=4
-Experiment 43/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.1x, teleportation, parts=2
-Experiment 44/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.1x, teleportation, parts=4
+Experiment 43/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.1x, tp, parts=2
+Experiment 44/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.1x, tp, parts=4
 Experiment 45/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.2x, cat, parts=2
 Experiment 46/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.2x, cat, parts=4
-Experiment 47/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.2x, teleportation, parts=2
-Experiment 48/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.2x, teleportation, parts=4
+Experiment 47/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.2x, tp, parts=2
+Experiment 48/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.01, comm=1.2x, tp, parts=4
 Experiment 49/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.0x, cat, parts=2
 Experiment 50/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.0x, cat, parts=4
-Experiment 51/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.0x, teleportation, parts=2
-Experiment 52/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.0x, teleportation, parts=4
+Experiment 51/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.0x, tp, parts=2
+Experiment 52/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.0x, tp, parts=4
 Experiment 53/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.05x, cat, parts=2
 Experiment 54/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.05x, cat, parts=4
-Experiment 55/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.05x, teleportation, parts=2
-Experiment 56/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.05x, teleportation, parts=4
+Experiment 55/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.05x, tp, parts=2
+Experiment 56/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.05x, tp, parts=4
 Experiment 57/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.1x, cat, parts=2
 Experiment 58/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.1x, cat, parts=4
-Experiment 59/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.1x, teleportation, parts=2
-Experiment 60/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.1x, teleportation, parts=4
+Experiment 59/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.1x, tp, parts=2
+Experiment 60/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.1x, tp, parts=4
 Experiment 61/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.2x, cat, parts=2
 Experiment 62/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.2x, cat, parts=4
-Experiment 63/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.2x, teleportation, parts=2
-Experiment 64/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.2x, teleportation, parts=4
+Experiment 63/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.2x, tp, parts=2
+Experiment 64/26240: graphstate_nativegates_ibm_opt0_4q (4q), local, noise=0.02, comm=1.2x, tp, parts=4
 Experiment 65/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, cat, parts=2
   Error: division by zero
 Experiment 66/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, cat, parts=4
@@ -73,15 +73,15 @@ Experiment 68/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=
   Error: division by zero
 Experiment 69/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, cat, parts=10
   Error: division by zero
-Experiment 70/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, teleportation, parts=2
+Experiment 70/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, tp, parts=2
   Error: division by zero
-Experiment 71/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, teleportation, parts=4
+Experiment 71/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, tp, parts=4
   Error: division by zero
-Experiment 72/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, teleportation, parts=6
+Experiment 72/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, tp, parts=6
   Error: division by zero
-Experiment 73/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, teleportation, parts=8
+Experiment 73/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, tp, parts=8
   Error: division by zero
-Experiment 74/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, teleportation, parts=10
+Experiment 74/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.0x, tp, parts=10
   Error: division by zero
 Experiment 75/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, cat, parts=2
   Error: division by zero
@@ -93,15 +93,15 @@ Experiment 78/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=
   Error: division by zero
 Experiment 79/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, cat, parts=10
   Error: division by zero
-Experiment 80/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, teleportation, parts=2
+Experiment 80/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, tp, parts=2
   Error: division by zero
-Experiment 81/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, teleportation, parts=4
+Experiment 81/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, tp, parts=4
   Error: division by zero
-Experiment 82/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, teleportation, parts=6
+Experiment 82/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, tp, parts=6
   Error: division by zero
-Experiment 83/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, teleportation, parts=8
+Experiment 83/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, tp, parts=8
   Error: division by zero
-Experiment 84/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, teleportation, parts=10
+Experiment 84/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.05x, tp, parts=10
   Error: division by zero
 Experiment 85/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, cat, parts=2
   Error: division by zero
@@ -113,15 +113,15 @@ Experiment 88/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=
   Error: division by zero
 Experiment 89/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, cat, parts=10
   Error: division by zero
-Experiment 90/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, teleportation, parts=2
+Experiment 90/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, tp, parts=2
   Error: division by zero
-Experiment 91/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, teleportation, parts=4
+Experiment 91/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, tp, parts=4
   Error: division by zero
-Experiment 92/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, teleportation, parts=6
+Experiment 92/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, tp, parts=6
   Error: division by zero
-Experiment 93/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, teleportation, parts=8
+Experiment 93/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, tp, parts=8
   Error: division by zero
-Experiment 94/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, teleportation, parts=10
+Experiment 94/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.1x, tp, parts=10
   Error: division by zero
 Experiment 95/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, cat, parts=2
   Error: division by zero
@@ -133,15 +133,15 @@ Experiment 98/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=
   Error: division by zero
 Experiment 99/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, cat, parts=10
   Error: division by zero
-Experiment 100/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, teleportation, parts=2
+Experiment 100/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, tp, parts=2
   Error: division by zero
-Experiment 101/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, teleportation, parts=4
+Experiment 101/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, tp, parts=4
   Error: division by zero
-Experiment 102/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, teleportation, parts=6
+Experiment 102/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, tp, parts=6
   Error: division by zero
-Experiment 103/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, teleportation, parts=8
+Experiment 103/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, tp, parts=8
   Error: division by zero
-Experiment 104/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, teleportation, parts=10
+Experiment 104/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.01, comm=1.2x, tp, parts=10
   Error: division by zero
 Experiment 105/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, cat, parts=2
   Error: division by zero
@@ -153,15 +153,15 @@ Experiment 108/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise
   Error: division by zero
 Experiment 109/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, cat, parts=10
   Error: division by zero
-Experiment 110/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, teleportation, parts=2
+Experiment 110/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, tp, parts=2
   Error: division by zero
-Experiment 111/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, teleportation, parts=4
+Experiment 111/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, tp, parts=4
   Error: division by zero
-Experiment 112/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, teleportation, parts=6
+Experiment 112/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, tp, parts=6
   Error: division by zero
-Experiment 113/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, teleportation, parts=8
+Experiment 113/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, tp, parts=8
   Error: division by zero
-Experiment 114/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, teleportation, parts=10
+Experiment 114/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.0x, tp, parts=10
   Error: division by zero
 Experiment 115/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, cat, parts=2
   Error: division by zero
@@ -173,15 +173,15 @@ Experiment 118/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise
   Error: division by zero
 Experiment 119/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, cat, parts=10
   Error: division by zero
-Experiment 120/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, teleportation, parts=2
+Experiment 120/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, tp, parts=2
   Error: division by zero
-Experiment 121/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, teleportation, parts=4
+Experiment 121/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, tp, parts=4
   Error: division by zero
-Experiment 122/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, teleportation, parts=6
+Experiment 122/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, tp, parts=6
   Error: division by zero
-Experiment 123/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, teleportation, parts=8
+Experiment 123/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, tp, parts=8
   Error: division by zero
-Experiment 124/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, teleportation, parts=10
+Experiment 124/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.05x, tp, parts=10
   Error: division by zero
 Experiment 125/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, cat, parts=2
   Error: division by zero
@@ -193,15 +193,15 @@ Experiment 128/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise
   Error: division by zero
 Experiment 129/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, cat, parts=10
   Error: division by zero
-Experiment 130/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, teleportation, parts=2
+Experiment 130/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, tp, parts=2
   Error: division by zero
-Experiment 131/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, teleportation, parts=4
+Experiment 131/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, tp, parts=4
   Error: division by zero
-Experiment 132/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, teleportation, parts=6
+Experiment 132/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, tp, parts=6
   Error: division by zero
-Experiment 133/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, teleportation, parts=8
+Experiment 133/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, tp, parts=8
   Error: division by zero
-Experiment 134/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, teleportation, parts=10
+Experiment 134/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.1x, tp, parts=10
   Error: division by zero
 Experiment 135/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, cat, parts=2
   Error: division by zero
@@ -213,15 +213,15 @@ Experiment 138/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise
   Error: division by zero
 Experiment 139/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, cat, parts=10
   Error: division by zero
-Experiment 140/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, teleportation, parts=2
+Experiment 140/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, tp, parts=2
   Error: division by zero
-Experiment 141/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, teleportation, parts=4
+Experiment 141/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, tp, parts=4
   Error: division by zero
-Experiment 142/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, teleportation, parts=6
+Experiment 142/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, tp, parts=6
   Error: division by zero
-Experiment 143/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, teleportation, parts=8
+Experiment 143/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, tp, parts=8
   Error: division by zero
-Experiment 144/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, teleportation, parts=10
+Experiment 144/26240: graphstate_nativegates_ibm_opt0_112q (112q), global, noise=0.02, comm=1.2x, tp, parts=10
   Error: division by zero
 Experiment 145/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, cat, parts=2
   Error: division by zero
@@ -233,15 +233,15 @@ Experiment 148/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=
   Error: division by zero
 Experiment 149/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, cat, parts=10
   Error: division by zero
-Experiment 150/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, teleportation, parts=2
+Experiment 150/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, tp, parts=2
   Error: division by zero
-Experiment 151/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, teleportation, parts=4
+Experiment 151/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, tp, parts=4
   Error: division by zero
-Experiment 152/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, teleportation, parts=6
+Experiment 152/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, tp, parts=6
   Error: division by zero
-Experiment 153/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, teleportation, parts=8
+Experiment 153/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, tp, parts=8
   Error: division by zero
-Experiment 154/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, teleportation, parts=10
+Experiment 154/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.0x, tp, parts=10
   Error: division by zero
 Experiment 155/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, cat, parts=2
   Error: division by zero
@@ -253,15 +253,15 @@ Experiment 158/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=
   Error: division by zero
 Experiment 159/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, cat, parts=10
   Error: division by zero
-Experiment 160/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, teleportation, parts=2
+Experiment 160/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, tp, parts=2
   Error: division by zero
-Experiment 161/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, teleportation, parts=4
+Experiment 161/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, tp, parts=4
   Error: division by zero
-Experiment 162/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, teleportation, parts=6
+Experiment 162/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, tp, parts=6
   Error: division by zero
-Experiment 163/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, teleportation, parts=8
+Experiment 163/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, tp, parts=8
   Error: division by zero
-Experiment 164/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, teleportation, parts=10
+Experiment 164/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.05x, tp, parts=10
   Error: division by zero
 Experiment 165/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, cat, parts=2
   Error: division by zero
@@ -273,15 +273,15 @@ Experiment 168/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=
   Error: division by zero
 Experiment 169/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, cat, parts=10
   Error: division by zero
-Experiment 170/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, teleportation, parts=2
+Experiment 170/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, tp, parts=2
   Error: division by zero
-Experiment 171/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, teleportation, parts=4
+Experiment 171/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, tp, parts=4
   Error: division by zero
-Experiment 172/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, teleportation, parts=6
+Experiment 172/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, tp, parts=6
   Error: division by zero
-Experiment 173/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, teleportation, parts=8
+Experiment 173/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, tp, parts=8
   Error: division by zero
-Experiment 174/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, teleportation, parts=10
+Experiment 174/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.1x, tp, parts=10
   Error: division by zero
 Experiment 175/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, cat, parts=2
   Error: division by zero
@@ -293,15 +293,15 @@ Experiment 178/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=
   Error: division by zero
 Experiment 179/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, cat, parts=10
   Error: division by zero
-Experiment 180/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, teleportation, parts=2
+Experiment 180/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, tp, parts=2
   Error: division by zero
-Experiment 181/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, teleportation, parts=4
+Experiment 181/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, tp, parts=4
   Error: division by zero
-Experiment 182/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, teleportation, parts=6
+Experiment 182/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, tp, parts=6
   Error: division by zero
-Experiment 183/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, teleportation, parts=8
+Experiment 183/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, tp, parts=8
   Error: division by zero
-Experiment 184/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, teleportation, parts=10
+Experiment 184/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.01, comm=1.2x, tp, parts=10
   Error: division by zero
 Experiment 185/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, cat, parts=2
   Error: division by zero
@@ -313,15 +313,15 @@ Experiment 188/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=
   Error: division by zero
 Experiment 189/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, cat, parts=10
   Error: division by zero
-Experiment 190/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, teleportation, parts=2
+Experiment 190/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, tp, parts=2
   Error: division by zero
-Experiment 191/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, teleportation, parts=4
+Experiment 191/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, tp, parts=4
   Error: division by zero
-Experiment 192/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, teleportation, parts=6
+Experiment 192/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, tp, parts=6
   Error: division by zero
-Experiment 193/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, teleportation, parts=8
+Experiment 193/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, tp, parts=8
   Error: division by zero
-Experiment 194/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, teleportation, parts=10
+Experiment 194/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.0x, tp, parts=10
   Error: division by zero
 Experiment 195/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, cat, parts=2
   Error: division by zero
@@ -333,15 +333,15 @@ Experiment 198/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=
   Error: division by zero
 Experiment 199/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, cat, parts=10
   Error: division by zero
-Experiment 200/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, teleportation, parts=2
+Experiment 200/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, tp, parts=2
   Error: division by zero
-Experiment 201/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, teleportation, parts=4
+Experiment 201/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, tp, parts=4
   Error: division by zero
-Experiment 202/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, teleportation, parts=6
+Experiment 202/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, tp, parts=6
   Error: division by zero
-Experiment 203/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, teleportation, parts=8
+Experiment 203/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, tp, parts=8
   Error: division by zero
-Experiment 204/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, teleportation, parts=10
+Experiment 204/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.05x, tp, parts=10
   Error: division by zero
 Experiment 205/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, cat, parts=2
   Error: division by zero
@@ -353,15 +353,15 @@ Experiment 208/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=
   Error: division by zero
 Experiment 209/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, cat, parts=10
   Error: division by zero
-Experiment 210/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, teleportation, parts=2
+Experiment 210/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, tp, parts=2
   Error: division by zero
-Experiment 211/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, teleportation, parts=4
+Experiment 211/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, tp, parts=4
   Error: division by zero
-Experiment 212/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, teleportation, parts=6
+Experiment 212/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, tp, parts=6
   Error: division by zero
-Experiment 213/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, teleportation, parts=8
+Experiment 213/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, tp, parts=8
   Error: division by zero
-Experiment 214/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, teleportation, parts=10
+Experiment 214/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.1x, tp, parts=10
   Error: division by zero
 Experiment 215/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, cat, parts=2
   Error: division by zero
@@ -373,15 +373,15 @@ Experiment 218/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=
   Error: division by zero
 Experiment 219/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, cat, parts=10
   Error: division by zero
-Experiment 220/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, teleportation, parts=2
+Experiment 220/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, tp, parts=2
   Error: division by zero
-Experiment 221/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, teleportation, parts=4
+Experiment 221/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, tp, parts=4
   Error: division by zero
-Experiment 222/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, teleportation, parts=6
+Experiment 222/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, tp, parts=6
   Error: division by zero
-Experiment 223/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, teleportation, parts=8
+Experiment 223/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, tp, parts=8
   Error: division by zero
-Experiment 224/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, teleportation, parts=10
+Experiment 224/26240: graphstate_nativegates_ibm_opt0_112q (112q), local, noise=0.02, comm=1.2x, tp, parts=10
   Error: division by zero
 Experiment 225/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, cat, parts=2
   Error: division by zero
@@ -393,15 +393,15 @@ Experiment 228/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise
   Error: division by zero
 Experiment 229/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, cat, parts=10
   Error: division by zero
-Experiment 230/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, teleportation, parts=2
+Experiment 230/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, tp, parts=2
   Error: division by zero
-Experiment 231/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, teleportation, parts=4
+Experiment 231/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, tp, parts=4
   Error: division by zero
-Experiment 232/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, teleportation, parts=6
+Experiment 232/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, tp, parts=6
   Error: division by zero
-Experiment 233/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, teleportation, parts=8
+Experiment 233/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, tp, parts=8
   Error: division by zero
-Experiment 234/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, teleportation, parts=10
+Experiment 234/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.0x, tp, parts=10
   Error: division by zero
 Experiment 235/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, cat, parts=2
   Error: division by zero
@@ -413,15 +413,15 @@ Experiment 238/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise
   Error: division by zero
 Experiment 239/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, cat, parts=10
   Error: division by zero
-Experiment 240/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, teleportation, parts=2
+Experiment 240/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, tp, parts=2
   Error: division by zero
-Experiment 241/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, teleportation, parts=4
+Experiment 241/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, tp, parts=4
   Error: division by zero
-Experiment 242/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, teleportation, parts=6
+Experiment 242/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, tp, parts=6
   Error: division by zero
-Experiment 243/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, teleportation, parts=8
+Experiment 243/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, tp, parts=8
   Error: division by zero
-Experiment 244/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, teleportation, parts=10
+Experiment 244/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.05x, tp, parts=10
   Error: division by zero
 Experiment 245/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, cat, parts=2
   Error: division by zero
@@ -433,15 +433,15 @@ Experiment 248/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise
   Error: division by zero
 Experiment 249/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, cat, parts=10
   Error: division by zero
-Experiment 250/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, teleportation, parts=2
+Experiment 250/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, tp, parts=2
   Error: division by zero
-Experiment 251/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, teleportation, parts=4
+Experiment 251/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, tp, parts=4
   Error: division by zero
-Experiment 252/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, teleportation, parts=6
+Experiment 252/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, tp, parts=6
   Error: division by zero
-Experiment 253/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, teleportation, parts=8
+Experiment 253/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, tp, parts=8
   Error: division by zero
-Experiment 254/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, teleportation, parts=10
+Experiment 254/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.1x, tp, parts=10
   Error: division by zero
 Experiment 255/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, cat, parts=2
   Error: division by zero
@@ -453,15 +453,15 @@ Experiment 258/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise
   Error: division by zero
 Experiment 259/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, cat, parts=10
   Error: division by zero
-Experiment 260/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, teleportation, parts=2
+Experiment 260/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, tp, parts=2
   Error: division by zero
-Experiment 261/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, teleportation, parts=4
+Experiment 261/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, tp, parts=4
   Error: division by zero
-Experiment 262/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, teleportation, parts=6
+Experiment 262/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, tp, parts=6
   Error: division by zero
-Experiment 263/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, teleportation, parts=8
+Experiment 263/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, tp, parts=8
   Error: division by zero
-Experiment 264/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, teleportation, parts=10
+Experiment 264/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.01, comm=1.2x, tp, parts=10
   Error: division by zero
 Experiment 265/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, cat, parts=2
   Error: division by zero
@@ -473,15 +473,15 @@ Experiment 268/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise
   Error: division by zero
 Experiment 269/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, cat, parts=10
   Error: division by zero
-Experiment 270/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, teleportation, parts=2
+Experiment 270/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, tp, parts=2
   Error: division by zero
-Experiment 271/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, teleportation, parts=4
+Experiment 271/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, tp, parts=4
   Error: division by zero
-Experiment 272/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, teleportation, parts=6
+Experiment 272/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, tp, parts=6
   Error: division by zero
-Experiment 273/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, teleportation, parts=8
+Experiment 273/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, tp, parts=8
   Error: division by zero
-Experiment 274/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, teleportation, parts=10
+Experiment 274/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.0x, tp, parts=10
   Error: division by zero
 Experiment 275/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, cat, parts=2
   Error: division by zero
@@ -493,15 +493,15 @@ Experiment 278/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise
   Error: division by zero
 Experiment 279/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, cat, parts=10
   Error: division by zero
-Experiment 280/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, teleportation, parts=2
+Experiment 280/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, tp, parts=2
   Error: division by zero
-Experiment 281/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, teleportation, parts=4
+Experiment 281/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, tp, parts=4
   Error: division by zero
-Experiment 282/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, teleportation, parts=6
+Experiment 282/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, tp, parts=6
   Error: division by zero
-Experiment 283/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, teleportation, parts=8
+Experiment 283/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, tp, parts=8
   Error: division by zero
-Experiment 284/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, teleportation, parts=10
+Experiment 284/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.05x, tp, parts=10
   Error: division by zero
 Experiment 285/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, cat, parts=2
   Error: division by zero
@@ -513,15 +513,15 @@ Experiment 288/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise
   Error: division by zero
 Experiment 289/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, cat, parts=10
   Error: division by zero
-Experiment 290/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, teleportation, parts=2
+Experiment 290/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, tp, parts=2
   Error: division by zero
-Experiment 291/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, teleportation, parts=4
+Experiment 291/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, tp, parts=4
   Error: division by zero
-Experiment 292/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, teleportation, parts=6
+Experiment 292/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, tp, parts=6
   Error: division by zero
-Experiment 293/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, teleportation, parts=8
+Experiment 293/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, tp, parts=8
   Error: division by zero
-Experiment 294/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, teleportation, parts=10
+Experiment 294/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.1x, tp, parts=10
   Error: division by zero
 Experiment 295/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, cat, parts=2
   Error: division by zero
@@ -533,15 +533,15 @@ Experiment 298/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise
   Error: division by zero
 Experiment 299/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, cat, parts=10
   Error: division by zero
-Experiment 300/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, teleportation, parts=2
+Experiment 300/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, tp, parts=2
   Error: division by zero
-Experiment 301/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, teleportation, parts=4
+Experiment 301/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, tp, parts=4
   Error: division by zero
-Experiment 302/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, teleportation, parts=6
+Experiment 302/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, tp, parts=6
   Error: division by zero
-Experiment 303/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, teleportation, parts=8
+Experiment 303/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, tp, parts=8
   Error: division by zero
-Experiment 304/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, teleportation, parts=10
+Experiment 304/26240: graphstate_nativegates_ibm_opt0_104q (104q), global, noise=0.02, comm=1.2x, tp, parts=10
   Error: division by zero
 Experiment 305/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, cat, parts=2
   Error: division by zero
@@ -553,15 +553,15 @@ Experiment 308/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=
   Error: division by zero
 Experiment 309/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, cat, parts=10
   Error: division by zero
-Experiment 310/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, teleportation, parts=2
+Experiment 310/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, tp, parts=2
   Error: division by zero
-Experiment 311/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, teleportation, parts=4
+Experiment 311/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, tp, parts=4
   Error: division by zero
-Experiment 312/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, teleportation, parts=6
+Experiment 312/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, tp, parts=6
   Error: division by zero
-Experiment 313/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, teleportation, parts=8
+Experiment 313/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, tp, parts=8
   Error: division by zero
-Experiment 314/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, teleportation, parts=10
+Experiment 314/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.0x, tp, parts=10
   Error: division by zero
 Experiment 315/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, cat, parts=2
   Error: division by zero
@@ -573,15 +573,15 @@ Experiment 318/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=
   Error: division by zero
 Experiment 319/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, cat, parts=10
   Error: division by zero
-Experiment 320/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, teleportation, parts=2
+Experiment 320/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, tp, parts=2
   Error: division by zero
-Experiment 321/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, teleportation, parts=4
+Experiment 321/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, tp, parts=4
   Error: division by zero
-Experiment 322/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, teleportation, parts=6
+Experiment 322/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, tp, parts=6
   Error: division by zero
-Experiment 323/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, teleportation, parts=8
+Experiment 323/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, tp, parts=8
   Error: division by zero
-Experiment 324/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, teleportation, parts=10
+Experiment 324/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.05x, tp, parts=10
   Error: division by zero
 Experiment 325/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, cat, parts=2
   Error: division by zero
@@ -593,15 +593,15 @@ Experiment 328/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=
   Error: division by zero
 Experiment 329/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, cat, parts=10
   Error: division by zero
-Experiment 330/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, teleportation, parts=2
+Experiment 330/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, tp, parts=2
   Error: division by zero
-Experiment 331/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, teleportation, parts=4
+Experiment 331/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, tp, parts=4
   Error: division by zero
-Experiment 332/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, teleportation, parts=6
+Experiment 332/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, tp, parts=6
   Error: division by zero
-Experiment 333/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, teleportation, parts=8
+Experiment 333/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, tp, parts=8
   Error: division by zero
-Experiment 334/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, teleportation, parts=10
+Experiment 334/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.1x, tp, parts=10
   Error: division by zero
 Experiment 335/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, cat, parts=2
   Error: division by zero
@@ -613,15 +613,15 @@ Experiment 338/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=
   Error: division by zero
 Experiment 339/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, cat, parts=10
   Error: division by zero
-Experiment 340/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, teleportation, parts=2
+Experiment 340/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, tp, parts=2
   Error: division by zero
-Experiment 341/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, teleportation, parts=4
+Experiment 341/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, tp, parts=4
   Error: division by zero
-Experiment 342/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, teleportation, parts=6
+Experiment 342/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, tp, parts=6
   Error: division by zero
-Experiment 343/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, teleportation, parts=8
+Experiment 343/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, tp, parts=8
   Error: division by zero
-Experiment 344/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, teleportation, parts=10
+Experiment 344/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.01, comm=1.2x, tp, parts=10
   Error: division by zero
 Experiment 345/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, cat, parts=2
   Error: division by zero
@@ -633,15 +633,15 @@ Experiment 348/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=
   Error: division by zero
 Experiment 349/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, cat, parts=10
   Error: division by zero
-Experiment 350/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, teleportation, parts=2
+Experiment 350/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, tp, parts=2
   Error: division by zero
-Experiment 351/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, teleportation, parts=4
+Experiment 351/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, tp, parts=4
   Error: division by zero
-Experiment 352/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, teleportation, parts=6
+Experiment 352/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, tp, parts=6
   Error: division by zero
-Experiment 353/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, teleportation, parts=8
+Experiment 353/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, tp, parts=8
   Error: division by zero
-Experiment 354/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, teleportation, parts=10
+Experiment 354/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.0x, tp, parts=10
   Error: division by zero
 Experiment 355/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, cat, parts=2
   Error: division by zero
@@ -653,15 +653,15 @@ Experiment 358/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=
   Error: division by zero
 Experiment 359/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, cat, parts=10
   Error: division by zero
-Experiment 360/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, teleportation, parts=2
+Experiment 360/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, tp, parts=2
   Error: division by zero
-Experiment 361/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, teleportation, parts=4
+Experiment 361/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, tp, parts=4
   Error: division by zero
-Experiment 362/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, teleportation, parts=6
+Experiment 362/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, tp, parts=6
   Error: division by zero
-Experiment 363/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, teleportation, parts=8
+Experiment 363/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, tp, parts=8
   Error: division by zero
-Experiment 364/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, teleportation, parts=10
+Experiment 364/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.05x, tp, parts=10
   Error: division by zero
 Experiment 365/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, cat, parts=2
   Error: division by zero
@@ -673,15 +673,15 @@ Experiment 368/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=
   Error: division by zero
 Experiment 369/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, cat, parts=10
   Error: division by zero
-Experiment 370/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, teleportation, parts=2
+Experiment 370/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, tp, parts=2
   Error: division by zero
-Experiment 371/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, teleportation, parts=4
+Experiment 371/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, tp, parts=4
   Error: division by zero
-Experiment 372/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, teleportation, parts=6
+Experiment 372/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, tp, parts=6
   Error: division by zero
-Experiment 373/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, teleportation, parts=8
+Experiment 373/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, tp, parts=8
   Error: division by zero
-Experiment 374/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, teleportation, parts=10
+Experiment 374/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.1x, tp, parts=10
   Error: division by zero
 Experiment 375/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, cat, parts=2
   Error: division by zero
@@ -693,149 +693,149 @@ Experiment 378/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=
   Error: division by zero
 Experiment 379/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, cat, parts=10
   Error: division by zero
-Experiment 380/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, teleportation, parts=2
+Experiment 380/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, tp, parts=2
   Error: division by zero
-Experiment 381/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, teleportation, parts=4
+Experiment 381/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, tp, parts=4
   Error: division by zero
-Experiment 382/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, teleportation, parts=6
+Experiment 382/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, tp, parts=6
   Error: division by zero
-Experiment 383/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, teleportation, parts=8
+Experiment 383/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, tp, parts=8
   Error: division by zero
-Experiment 384/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, teleportation, parts=10
+Experiment 384/26240: graphstate_nativegates_ibm_opt0_104q (104q), local, noise=0.02, comm=1.2x, tp, parts=10
   Error: division by zero
 Experiment 385/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, cat, parts=2
 Experiment 386/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, cat, parts=4
 Experiment 387/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, cat, parts=6
 Experiment 388/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, cat, parts=8
 Experiment 389/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, cat, parts=10
-Experiment 390/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, teleportation, parts=2
-Experiment 391/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, teleportation, parts=4
-Experiment 392/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, teleportation, parts=6
-Experiment 393/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, teleportation, parts=8
-Experiment 394/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, teleportation, parts=10
+Experiment 390/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, tp, parts=2
+Experiment 391/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, tp, parts=4
+Experiment 392/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, tp, parts=6
+Experiment 393/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, tp, parts=8
+Experiment 394/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.0x, tp, parts=10
 Experiment 395/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, cat, parts=2
 Experiment 396/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, cat, parts=4
 Experiment 397/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, cat, parts=6
 Experiment 398/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, cat, parts=8
 Experiment 399/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, cat, parts=10
-Experiment 400/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, teleportation, parts=2
-Experiment 401/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, teleportation, parts=4
-Experiment 402/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, teleportation, parts=6
-Experiment 403/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, teleportation, parts=8
-Experiment 404/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, teleportation, parts=10
+Experiment 400/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, tp, parts=2
+Experiment 401/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, tp, parts=4
+Experiment 402/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, tp, parts=6
+Experiment 403/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, tp, parts=8
+Experiment 404/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.05x, tp, parts=10
 Experiment 405/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, cat, parts=2
 Experiment 406/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, cat, parts=4
 Experiment 407/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, cat, parts=6
 Experiment 408/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, cat, parts=8
 Experiment 409/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, cat, parts=10
-Experiment 410/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, teleportation, parts=2
-Experiment 411/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, teleportation, parts=4
-Experiment 412/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, teleportation, parts=6
-Experiment 413/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, teleportation, parts=8
-Experiment 414/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, teleportation, parts=10
+Experiment 410/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, tp, parts=2
+Experiment 411/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, tp, parts=4
+Experiment 412/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, tp, parts=6
+Experiment 413/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, tp, parts=8
+Experiment 414/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.1x, tp, parts=10
 Experiment 415/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, cat, parts=2
 Experiment 416/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, cat, parts=4
 Experiment 417/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, cat, parts=6
 Experiment 418/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, cat, parts=8
 Experiment 419/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, cat, parts=10
-Experiment 420/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, teleportation, parts=2
-Experiment 421/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, teleportation, parts=4
-Experiment 422/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, teleportation, parts=6
-Experiment 423/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, teleportation, parts=8
-Experiment 424/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, teleportation, parts=10
+Experiment 420/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, tp, parts=2
+Experiment 421/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, tp, parts=4
+Experiment 422/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, tp, parts=6
+Experiment 423/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, tp, parts=8
+Experiment 424/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.01, comm=1.2x, tp, parts=10
 Experiment 425/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, cat, parts=2
 Experiment 426/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, cat, parts=4
 Experiment 427/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, cat, parts=6
 Experiment 428/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, cat, parts=8
 Experiment 429/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, cat, parts=10
-Experiment 430/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, teleportation, parts=2
-Experiment 431/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, teleportation, parts=4
-Experiment 432/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, teleportation, parts=6
-Experiment 433/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, teleportation, parts=8
-Experiment 434/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, teleportation, parts=10
+Experiment 430/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, tp, parts=2
+Experiment 431/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, tp, parts=4
+Experiment 432/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, tp, parts=6
+Experiment 433/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, tp, parts=8
+Experiment 434/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.0x, tp, parts=10
 Experiment 435/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, cat, parts=2
 Experiment 436/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, cat, parts=4
 Experiment 437/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, cat, parts=6
 Experiment 438/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, cat, parts=8
 Experiment 439/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, cat, parts=10
-Experiment 440/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, teleportation, parts=2
-Experiment 441/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, teleportation, parts=4
-Experiment 442/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, teleportation, parts=6
-Experiment 443/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, teleportation, parts=8
-Experiment 444/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, teleportation, parts=10
+Experiment 440/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, tp, parts=2
+Experiment 441/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, tp, parts=4
+Experiment 442/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, tp, parts=6
+Experiment 443/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, tp, parts=8
+Experiment 444/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.05x, tp, parts=10
 Experiment 445/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, cat, parts=2
 Experiment 446/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, cat, parts=4
 Experiment 447/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, cat, parts=6
 Experiment 448/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, cat, parts=8
 Experiment 449/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, cat, parts=10
-Experiment 450/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, teleportation, parts=2
-Experiment 451/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, teleportation, parts=4
-Experiment 452/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, teleportation, parts=6
-Experiment 453/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, teleportation, parts=8
-Experiment 454/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, teleportation, parts=10
+Experiment 450/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, tp, parts=2
+Experiment 451/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, tp, parts=4
+Experiment 452/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, tp, parts=6
+Experiment 453/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, tp, parts=8
+Experiment 454/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.1x, tp, parts=10
 Experiment 455/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, cat, parts=2
 Experiment 456/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, cat, parts=4
 Experiment 457/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, cat, parts=6
 Experiment 458/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, cat, parts=8
 Experiment 459/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, cat, parts=10
-Experiment 460/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, teleportation, parts=2
-Experiment 461/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, teleportation, parts=4
-Experiment 462/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, teleportation, parts=6
-Experiment 463/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, teleportation, parts=8
-Experiment 464/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, teleportation, parts=10
+Experiment 460/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, tp, parts=2
+Experiment 461/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, tp, parts=4
+Experiment 462/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, tp, parts=6
+Experiment 463/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, tp, parts=8
+Experiment 464/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), global, noise=0.02, comm=1.2x, tp, parts=10
 Experiment 465/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, cat, parts=2
 Experiment 466/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, cat, parts=4
 Experiment 467/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, cat, parts=6
 Experiment 468/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, cat, parts=8
 Experiment 469/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, cat, parts=10
-Experiment 470/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, teleportation, parts=2
-Experiment 471/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, teleportation, parts=4
-Experiment 472/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, teleportation, parts=6
-Experiment 473/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, teleportation, parts=8
-Experiment 474/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, teleportation, parts=10
+Experiment 470/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, tp, parts=2
+Experiment 471/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, tp, parts=4
+Experiment 472/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, tp, parts=6
+Experiment 473/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, tp, parts=8
+Experiment 474/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.0x, tp, parts=10
 Experiment 475/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, cat, parts=2
 Experiment 476/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, cat, parts=4
 Experiment 477/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, cat, parts=6
 Experiment 478/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, cat, parts=8
 Experiment 479/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, cat, parts=10
-Experiment 480/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, teleportation, parts=2
-Experiment 481/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, teleportation, parts=4
-Experiment 482/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, teleportation, parts=6
-Experiment 483/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, teleportation, parts=8
-Experiment 484/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, teleportation, parts=10
+Experiment 480/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, tp, parts=2
+Experiment 481/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, tp, parts=4
+Experiment 482/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, tp, parts=6
+Experiment 483/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, tp, parts=8
+Experiment 484/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.05x, tp, parts=10
 Experiment 485/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, cat, parts=2
 Experiment 486/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, cat, parts=4
 Experiment 487/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, cat, parts=6
 Experiment 488/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, cat, parts=8
 Experiment 489/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, cat, parts=10
-Experiment 490/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, teleportation, parts=2
-Experiment 491/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, teleportation, parts=4
-Experiment 492/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, teleportation, parts=6
-Experiment 493/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, teleportation, parts=8
-Experiment 494/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, teleportation, parts=10
+Experiment 490/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, tp, parts=2
+Experiment 491/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, tp, parts=4
+Experiment 492/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, tp, parts=6
+Experiment 493/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, tp, parts=8
+Experiment 494/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.1x, tp, parts=10
 Experiment 495/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, cat, parts=2
 Experiment 496/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, cat, parts=4
 Experiment 497/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, cat, parts=6
 Experiment 498/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, cat, parts=8
 Experiment 499/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, cat, parts=10
-Experiment 500/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, teleportation, parts=2
-Experiment 501/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, teleportation, parts=4
-Experiment 502/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, teleportation, parts=6
-Experiment 503/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, teleportation, parts=8
-Experiment 504/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, teleportation, parts=10
+Experiment 500/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, tp, parts=2
+Experiment 501/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, tp, parts=4
+Experiment 502/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, tp, parts=6
+Experiment 503/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, tp, parts=8
+Experiment 504/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.01, comm=1.2x, tp, parts=10
 Experiment 505/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, cat, parts=2
 Experiment 506/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, cat, parts=4
 Experiment 507/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, cat, parts=6
 Experiment 508/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, cat, parts=8
 Experiment 509/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, cat, parts=10
-Experiment 510/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, teleportation, parts=2
-Experiment 511/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, teleportation, parts=4
-Experiment 512/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, teleportation, parts=6
-Experiment 513/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, teleportation, parts=8
-Experiment 514/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, teleportation, parts=10
+Experiment 510/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, tp, parts=2
+Experiment 511/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, tp, parts=4
+Experiment 512/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, tp, parts=6
+Experiment 513/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, tp, parts=8
+Experiment 514/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.0x, tp, parts=10
 Experiment 515/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.05x, cat, parts=2
 Experiment 516/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.05x, cat, parts=4
 Experiment 517/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.05x, cat, parts=6
 Experiment 518/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.05x, cat, parts=8
 Experiment 519/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.05x, cat, parts=10
-Experiment 520/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.05x, teleportation, parts=2
+Experiment 520/26240: qpeinexact_nativegates_ibm_opt0_18q (18q), local, noise=0.02, comm=1.05x, tp, parts=2

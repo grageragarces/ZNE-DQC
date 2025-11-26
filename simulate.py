@@ -312,7 +312,7 @@ def run_simulation_experiment(circuit: QuantumCircuit,
         algorithm_name: Name of the algorithm
         local_noise: Base noise level
         comm_noise_multiplier: Communication noise multiplier
-        comm_primitive: 'cat' or 'teleportation'
+        comm_primitive: 'cat' or 'tp'
         shots: Number of shots
         num_partitions: Number of partitions
         apply_zne_flag: Whether to apply ZNE
@@ -421,7 +421,7 @@ def run_batch_experiments(circuits: List[Tuple[QuantumCircuit, str]],
     if comm_noise_multipliers is None:
         comm_noise_multipliers = [1.0, 1.05, 1.1, 1.2]
     if comm_primitives is None:
-        comm_primitives = ['cat', 'teleportation']
+        comm_primitives = ['cat', 'tp']
     if partition_counts is None:
         partition_counts = [2, 4, 6, 8, 10]
     

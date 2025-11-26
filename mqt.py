@@ -176,7 +176,7 @@ def run_mqt_bench_experiments_incremental(
     if comm_noise_multipliers is None:
         comm_noise_multipliers = [1.0, 1.05, 1.1, 1.2]
     if comm_primitives is None:
-        comm_primitives = ['cat', 'teleportation']
+        comm_primitives = ['cat', 'tp']
     if partition_counts is None:
         partition_counts = [2, 4, 6, 8, 10]
     
@@ -225,12 +225,12 @@ def run_mqt_bench_experiments_incremental(
                 for comm_mult in comm_noise_multipliers:
                     for primitive in comm_primitives:
                         for parts in valid_partitions:
-                            # NEW: Check if this experiment will exceed simulator limits
+                            # Check if this experiment will exceed simulator limits
                             # For 'cat' primitive, additional qubits are added
                             if primitive == 'cat':
                                 # Cat state adds extra qubits for communication
                                 estimated_qubits = num_qubits + (parts - 1) * 2  # Rough estimate
-                            else:  # teleportation
+                            else:  # tp
                                 estimated_qubits = num_qubits + (parts - 1) * 3  # Rough estimate
                             
                             exp_id = f"{name}_{strategy}_{noise}_{comm_mult}_{primitive}_{parts}"
