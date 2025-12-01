@@ -501,6 +501,47 @@ def local_opt(circuit: QuantumCircuit, num_partitions: int = 2,
     
     return final_circuit
 
+def no_opt(circuit: QuantumCircuit, num_partitions: int = 2,
+              comm_primitive: str = 'tp') -> QuantumCircuit:
+    """
+    Local optimization strategy:
+    1. Convert circuit to graph
+    2. Partition the graph
+    3. Extract subcircuits
+    4. No opt
+    5. Reconnect with communication primitives
+    
+    Args:
+        circuit: Input quantum circuit
+        num_partitions: Number of partitions to create
+        comm_primitive: 'cat' or 'tp'
+    
+    Returns:
+        Partitioned and reconnected circuit
+    """
+    # Ensure valid number of partitions
+    num_partitions = min(num_partitions, circuit.num_qubits)
+    
+    # Step 1: Convert to graph
+    G, all_gates = circuit_to_graph(circuit)
+    
+    # Step 2: Partition
+    partition_map = partition_graph(G, num_partitions)
+    
+    # Step 3: Find cut edges
+    cut_edges = find_cut_edges(G, partition_map)
+    
+    # Step 4: Extract subcircuits
+    subcircuits = []
+    for p in range(num_partitions):
+        subcircuit = extract_subcircuit(all_gates, partition_map, p)
+        subcircuits.append(subcircuit)
+    
+    # Step 6: Reconnect with communication primitives
+    final_circuit = reconnect_partitions(subcircuits, cut_edges, 
+                                        partition_map, comm_primitive)
+    
+    return final_circuit
 
 def partitioning(circuit: QuantumCircuit, strategy: str = 'global',
                 num_partitions: int = 2, comm_primitive: str = 'tp') -> QuantumCircuit:
@@ -520,6 +561,8 @@ def partitioning(circuit: QuantumCircuit, strategy: str = 'global',
         return global_opt(circuit, num_partitions, comm_primitive)
     elif strategy == 'local':
         return local_opt(circuit, num_partitions, comm_primitive)
+    elif strategy == 'no':
+        return no_opt(circuit, num_partitions, comm_primitive)
     else:
         raise ValueError(f"Unknown strategy: {strategy}. Must be 'global' or 'local'")
 

@@ -170,7 +170,7 @@ def run_mqt_bench_experiments_incremental(
     
     # Set defaults
     if strategies is None:
-        strategies = ['global', 'local']
+        strategies = ['global', 'local', 'no']
     if noise_levels is None:
         noise_levels = [0.01, 0.02]
     if comm_noise_multipliers is None:
@@ -374,7 +374,7 @@ if __name__ == "__main__":
         min_qubits=2,
         max_qubits=31,  # Stay within simulator limits
         max_circuits_per_origin=10,
-        strategies=['local'],  # Just local for now
+        strategies=['no'],  # default no
         noise_levels=[0.001, 0.005, 0.01, 0.015, 0.02],
         comm_noise_multipliers=[1.0, 1.1, 1.2],
         comm_primitives=['cat'],
