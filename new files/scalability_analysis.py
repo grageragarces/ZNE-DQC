@@ -37,7 +37,7 @@ print("STEP 1: DATA LOADING AND CLEANING")
 print("="*90)
 
 try:
-    df = pd.read_csv('results.csv')
+    df = pd.read_csv('./results.csv')
     print(f"✓ Loaded {len(df)} experiments")
 except Exception as e:
     print(f"✗ Error loading data: {e}")
