@@ -21,7 +21,7 @@ def main():
     if len(sys.argv) > 1:
         filepath = sys.argv[1]
     else:
-        filepath = 'results.csv'
+        filepath = '../results.csv'
     
     print(f"Loading {filepath}...")
     try:

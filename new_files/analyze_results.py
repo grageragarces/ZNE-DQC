@@ -133,7 +133,7 @@ def plot_scalability(df, output_dir='figures'):
     
     ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
     ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-    ax.set_title('Scalability: Error Reduction vs Partitions', fontsize=14, fontweight='bold')
+    ax.set_title('(a) Scalability: Error Reduction vs Partitions', fontsize=14, fontweight='bold')
     ax.legend(loc='best', frameon=True, shadow=True)
     ax.grid(True, alpha=0.3)
     ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -153,7 +153,7 @@ def plot_scalability(df, output_dir='figures'):
     
     ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
     ax.set_ylabel('ZNE Error', fontsize=12, fontweight='bold')
-    ax.set_title('Absolute Error vs Partitions', fontsize=14, fontweight='bold')
+    ax.set_title('(b) Absolute Error vs Partitions', fontsize=14, fontweight='bold')
     ax.legend(loc='best', frameon=True, shadow=True)
     ax.grid(True, alpha=0.3)
     
@@ -169,7 +169,7 @@ def plot_scalability(df, output_dir='figures'):
         
         ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
         ax.set_ylabel('Depth Overhead (ratio)', fontsize=12, fontweight='bold')
-        ax.set_title('Circuit Depth Penalty', fontsize=14, fontweight='bold')
+        ax.set_title('(c) Circuit Depth Penalty', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=1.0, color='gray', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -204,7 +204,7 @@ def plot_scalability(df, output_dir='figures'):
         
         ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
         ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title('Network Noise Resistance', fontsize=14, fontweight='bold')
+        ax.set_title('(a) Network Noise Resistance', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -222,7 +222,7 @@ def plot_scalability(df, output_dir='figures'):
                    ax=ax, cbar_kws={'label': 'Error Reduction'})
         ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
         ax.set_ylabel('Number of Partitions', fontsize=12, fontweight='bold')
-        ax.set_title('Error Reduction Heatmap', fontsize=14, fontweight='bold')
+        ax.set_title('(b) Error Reduction Heatmap', fontsize=14, fontweight='bold')
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig2_network_noise.png'
@@ -251,7 +251,7 @@ def plot_scalability(df, output_dir='figures'):
         
         ax.set_xlabel('Local Noise Level', fontsize=12, fontweight='bold')
         ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title('Performance vs Local Noise', fontsize=14, fontweight='bold')
+        ax.set_title('(a) Performance vs Local Noise', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -262,7 +262,7 @@ def plot_scalability(df, output_dir='figures'):
         sns.boxplot(data=df_plot, x='strategy', y='error_reduction', ax=ax, palette='Set2')
         ax.set_xlabel('Strategy', fontsize=12, fontweight='bold')
         ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title('Strategy Performance Distribution', fontsize=14, fontweight='bold')
+        ax.set_title('(b) Strategy Performance Distribution', fontsize=14, fontweight='bold')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
         ax.grid(True, alpha=0.3, axis='y')
         
@@ -274,11 +274,12 @@ def plot_scalability(df, output_dir='figures'):
     
     # Figure 4: Algorithm Family Analysis
     if 'algorithm_family' in df.columns:
-        families = df['algorithm_family'].value_counts().head(5).index
+        families = sorted(df['algorithm_family'].value_counts().head(3).index)
         
-        fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+        fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+        axes = axes.flatten()
         
-        # Plot 4a: Error reduction by algorithm family
+        # Plot 4a: Error reduction by algorithm family (overview)
         ax = axes[0]
         for family in families:
             df_fam = df[df['algorithm_family'] == family]
@@ -295,29 +296,38 @@ def plot_scalability(df, output_dir='figures'):
         
         ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
         ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title('Performance by Algorithm Family', fontsize=14, fontweight='bold')
+        ax.set_title('(a) Performance by Algorithm Family', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
         
-        # Plot 4b: Strategy comparison within top algorithm
-        ax = axes[1]
-        top_family = families[0]
-        df_top = df[df['algorithm_family'] == top_family]
-        
-        for strategy in sorted(df_top['strategy'].unique()):
-            df_strat = df_top[df_top['strategy'] == strategy]
-            grouped = df_strat.groupby('num_partitions_tested')['error_reduction'].mean()
+        # Plot 4b-4d: Strategy comparison for each algorithm family
+        for idx, family in enumerate(families):
+            ax = axes[idx + 1]
+            df_fam = df[df['algorithm_family'] == family]
             
-            ax.plot(grouped.index, grouped.values, marker='s', linewidth=2.5, markersize=8,
-                   label=strategy.upper(), alpha=0.8)
-        
-        ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title(f'Strategy Comparison: {top_family.upper()} Circuits', fontsize=14, fontweight='bold')
-        ax.legend(loc='best', frameon=True, shadow=True)
-        ax.grid(True, alpha=0.3)
-        ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
+            for strategy in sorted(df_fam['strategy'].unique()):
+                df_strat = df_fam[df_fam['strategy'] == strategy]
+                grouped = df_strat.groupby('num_partitions_tested').agg({
+                    'error_reduction': ['mean', 'std', 'count']
+                })
+                
+                if len(grouped) > 0:
+                    x = grouped.index
+                    y = grouped['error_reduction']['mean']
+                    err = grouped['error_reduction']['std'] / np.sqrt(grouped['error_reduction']['count'])
+                    
+                    ax.plot(x, y, marker='s', linewidth=2.5, markersize=8,
+                           label=strategy.upper(), alpha=0.8)
+                    ax.fill_between(x, y-err, y+err, alpha=0.2)
+            
+            ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
+            ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
+            ax.set_title(f'({chr(98+idx)}) Strategy Comparison: {family.upper()} Circuits', 
+                        fontsize=14, fontweight='bold')
+            ax.legend(loc='best', frameon=True, shadow=True)
+            ax.grid(True, alpha=0.3)
+            ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig4_algorithm_analysis.png'
@@ -385,7 +395,7 @@ def main():
     if len(sys.argv) > 1:
         input_file = sys.argv[1]
     else:
-        input_file = 'results.csv'
+        input_file = '../results.csv'
     
     # Run analysis
     df = load_and_clean_data(input_file)
