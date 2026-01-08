@@ -211,8 +211,7 @@ def plot_baseline_validation(df_full, output_dir='figures'):
         ax.set_xticks(positions)
         ax.set_xticklabels([s.upper() for s in strategies])
         ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title('Partition=1: Strategy Comparison\n(Should be identical)', 
-                    fontsize=12, fontweight='bold')
+        # ax.set_title('Partition=1: Strategy Comparison\n(Should be identical)', fontsize=12, fontweight='bold')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5)
         ax.grid(True, alpha=0.3, axis='y')
     
@@ -223,8 +222,7 @@ def plot_baseline_validation(df_full, output_dir='figures'):
               linestyle='--', linewidth=2, label=f"Mean: {df_baseline['error_reduction'].mean():.4f}")
     ax.set_xlabel('Error Reduction', fontsize=12, fontweight='bold')
     ax.set_ylabel('Frequency', fontsize=12, fontweight='bold')
-    ax.set_title('Partition=1: Error Reduction Distribution\n(No Distribution)', 
-                fontsize=12, fontweight='bold')
+    # ax.set_title('Partition=1: Error Reduction Distribution\n(No Distribution)', fontsize=12, fontweight='bold')
     ax.legend()
     ax.grid(True, alpha=0.3, axis='y')
     
@@ -257,7 +255,7 @@ def plot_scalability(df, output_dir='figures'):
     
     ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
     ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-    ax.set_title('Scalability: Error Reduction vs Partitions', fontsize=14, fontweight='bold')
+    # ax.set_title('Scalability: Error Reduction vs Partitions', fontsize=14, fontweight='bold')
     ax.legend(loc='best', frameon=True, shadow=True)
     ax.grid(True, alpha=0.3)
     ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -284,7 +282,7 @@ def plot_scalability(df, output_dir='figures'):
     
     ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
     ax.set_ylabel('ZNE Error', fontsize=12, fontweight='bold')
-    ax.set_title('Absolute Error vs Partitions', fontsize=14, fontweight='bold')
+    # ax.set_title('Absolute Error vs Partitions', fontsize=14, fontweight='bold')
     ax.legend(loc='best', frameon=True, shadow=True)
     ax.grid(True, alpha=0.3)
     ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
@@ -307,7 +305,7 @@ def plot_scalability(df, output_dir='figures'):
         
         ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
         ax.set_ylabel('Depth Overhead (ratio)', fontsize=12, fontweight='bold')
-        ax.set_title('Circuit Depth Penalty', fontsize=14, fontweight='bold')
+        # ax.set_title('Circuit Depth Penalty', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=1.0, color='gray', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -337,7 +335,7 @@ def plot_scalability(df, output_dir='figures'):
         
         ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
         ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title('Network Noise Resistance', fontsize=14, fontweight='bold')
+        # ax.set_title('Network Noise Resistance', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -365,64 +363,54 @@ def plot_scalability(df, output_dir='figures'):
             # Return mean of filtered data, or original mean if too few points remain
             return filtered.mean() if len(filtered) >= 2 else x.mean()
         
-        # Create pivot table with robust mean
-        pivot_data = df.pivot_table(
+        # Create separate pivot tables for global and local strategies
+        df_global = df[df['strategy'] == 'global']
+        df_local = df[df['strategy'] == 'local']
+        
+        pivot_global = df_global.pivot_table(
             values='error_reduction',
             index='num_partitions_tested',
             columns='communication_noise_multiplier',
             aggfunc=robust_mean
         )
         
-        # Create sample count pivot for reference
-        pivot_counts = df.pivot_table(
+        pivot_local = df_local.pivot_table(
             values='error_reduction',
             index='num_partitions_tested',
             columns='communication_noise_multiplier',
-            aggfunc='count'
+            aggfunc=robust_mean
         )
         
-        # Create annotations with value and sample size
-        annotations = []
-        for i in range(len(pivot_data.index)):
-            row = []
-            for j in range(len(pivot_data.columns)):
-                value = pivot_data.iloc[i, j]
-                count = pivot_counts.iloc[i, j]
-                if pd.notna(value) and pd.notna(count):
-                    row.append(f'{value:.3f}\n(n={int(count)})')
-                else:
-                    row.append('')
-            annotations.append(row)
-        
-        # Figure 2b: Error Reduction Heatmap (with outlier filtering)
+        # Figure 2b: Global Strategy Heatmap
         fig, ax = plt.subplots(figsize=(8, 6))
-        sns.heatmap(pivot_data, annot=np.array(annotations), fmt='', cmap='RdYlGn', center=0,
+        sns.heatmap(pivot_global, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
                    ax=ax, cbar_kws={'label': 'Error Reduction'}, 
-                   vmin=-0.1, vmax=0.1)  # Fixed scale for better comparison
+                   vmin=-0.1, vmax=0.2)
         ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
         ax.set_ylabel('Number of Partitions', fontsize=12, fontweight='bold')
-        ax.set_title('Error Reduction Heatmap', fontsize=14, fontweight='bold')
+        # ax.set_title('Error Reduction Heatmap: Global ZNE', fontsize=14, fontweight='bold')
         
         plt.tight_layout()
-        filepath = Path(output_dir) / 'fig2b_error_reduction_heatmap.png'
+        filepath = Path(output_dir) / 'fig2b_error_reduction_heatmap_global.png'
         plt.savefig(filepath, dpi=300, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
         
-        # Figure 2c: Sample Size Distribution Heatmap
+        # Figure 2c: Local Strategy Heatmap
         fig, ax = plt.subplots(figsize=(8, 6))
-        sns.heatmap(pivot_counts, annot=True, fmt='g', cmap='Blues', 
-                   ax=ax, cbar_kws={'label': 'Sample Size'})
+        sns.heatmap(pivot_local, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
+                   ax=ax, cbar_kws={'label': 'Error Reduction'}, 
+                   vmin=-0.1, vmax=0.2)
         ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
         ax.set_ylabel('Number of Partitions', fontsize=12, fontweight='bold')
-        ax.set_title('Sample Size Distribution', fontsize=14, fontweight='bold')
+        # ax.set_title('Error Reduction Heatmap: Local ZNE', fontsize=14, fontweight='bold')
         
         plt.tight_layout()
-        filepath = Path(output_dir) / 'fig2c_sample_size_heatmap.png'
+        filepath = Path(output_dir) / 'fig2c_error_reduction_heatmap_local.png'
         plt.savefig(filepath, dpi=300, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
-        print(f"  Sample sizes range: {int(pivot_counts.min().min())}-{int(pivot_counts.max().max())}")
         plt.close()
+
     
     # Figure 3a: Error Reduction by Local Noise
     if 'local_noise' in df.columns:
@@ -442,7 +430,7 @@ def plot_scalability(df, output_dir='figures'):
         
         ax.set_xlabel('Local Noise Level', fontsize=12, fontweight='bold')
         ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title('Performance vs Local Noise', fontsize=14, fontweight='bold')
+        # ax.set_title('Performance vs Local Noise', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -459,7 +447,7 @@ def plot_scalability(df, output_dir='figures'):
         sns.boxplot(data=df_plot, x='strategy', y='error_reduction', ax=ax, palette='Set2')
         ax.set_xlabel('Strategy', fontsize=12, fontweight='bold')
         ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title('Strategy Performance Distribution', fontsize=14, fontweight='bold')
+        # ax.set_title('Strategy Performance Distribution', fontsize=14, fontweight='bold')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
         ax.grid(True, alpha=0.3, axis='y')
         
@@ -489,7 +477,7 @@ def plot_scalability(df, output_dir='figures'):
         
         ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
         ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        ax.set_title('Performance by Algorithm Family', fontsize=14, fontweight='bold')
+        # ax.set_title('Performance by Algorithm Family', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -523,8 +511,7 @@ def plot_scalability(df, output_dir='figures'):
             
             ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
             ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-            ax.set_title(f'Strategy Comparison: {family.upper()} Circuits', 
-                        fontsize=14, fontweight='bold')
+            # ax.set_title(f'Strategy Comparison: {family.upper()} Circuits', fontsize=14, fontweight='bold')
             ax.legend(loc='best', frameon=True, shadow=True)
             ax.grid(True, alpha=0.3)
             ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
