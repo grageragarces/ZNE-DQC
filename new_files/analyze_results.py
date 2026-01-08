@@ -2,7 +2,13 @@
 ZNE Distributed Quantum Computing Analysis
 Analyzes results from main_reduced.ipynb experiments
 
-Usage: python quick_ploys.py ../results.csv
+IMPORTANT: This script filters out partition=1 data from main analysis.
+- Partition=1 means NO distribution (circuit runs as single unit)
+- All strategies should be identical at partition=1
+- Communication parameters have no effect at partition=1
+- See fig0_baseline_validation_partition1.png to verify partition=1 behavior
+
+Usage: python analyze_results.py ../results.csv
 """
 
 import pandas as pd
@@ -27,6 +33,43 @@ def print_section(title):
     print("\n" + "="*80)
     print(f"  {title}")
     print("="*80)
+
+def filter_distributed_data(df, keep_baseline=False):
+    """
+    Filter out partition=1 data (no distribution) from analysis.
+    
+    When partition=1, there is NO distribution - the circuit runs as a single unit.
+    This means all strategies (global/local/no-ZNE) should produce identical results,
+    and communication parameters (primitive, noise multiplier) have no effect.
+    
+    Args:
+        df: DataFrame with experimental results
+        keep_baseline: If True, return both filtered data and baseline separately
+    
+    Returns:
+        df_distributed: Data with partition > 1 (actual distributed execution)
+        df_baseline: Data with partition = 1 (optional, only if keep_baseline=True)
+    """
+    if 'num_partitions_tested' not in df.columns:
+        print("⚠ Warning: 'num_partitions_tested' column not found, skipping filter")
+        return (df, pd.DataFrame()) if keep_baseline else df
+    
+    partition_1_count = (df['num_partitions_tested'] == 1).sum()
+    total_count = len(df)
+    
+    if partition_1_count > 0:
+        print(f"\n--- Filtering Partition Data ---")
+        print(f"  Partition = 1 (no distribution): {partition_1_count} experiments ({partition_1_count/total_count*100:.1f}%)")
+        print(f"  Partition > 1 (distributed): {total_count - partition_1_count} experiments ({(total_count-partition_1_count)/total_count*100:.1f}%)")
+        print(f"  → Excluding partition=1 from main analysis (no distribution occurs)")
+        print(f"  → All strategies should be identical at partition=1")
+    
+    df_baseline = df[df['num_partitions_tested'] == 1].copy() if keep_baseline else pd.DataFrame()
+    df_distributed = df[df['num_partitions_tested'] > 1].copy()
+    
+    if keep_baseline:
+        return df_distributed, df_baseline
+    return df_distributed
 
 def load_and_clean_data(filepath):
     """Load and clean the experimental data"""
@@ -103,9 +146,93 @@ def load_and_clean_data(filepath):
         df['network_noise_injected'] = df['num_partitions_tested'] * df['communication_noise_multiplier']
     
     print(f"\n✓ Data cleaned and augmented")
-    print(f"  Final dataset: {len(df)} experiments")
+    print(f"  Dataset before partition filter: {len(df)} experiments")
+    
+    # Filter out partition=1 data (no distribution occurs)
+    df = filter_distributed_data(df, keep_baseline=False)
+    
+    print(f"  Final dataset: {len(df)} experiments (partition > 1 only)")
     
     return df
+
+def plot_baseline_validation(df_full, output_dir='figures'):
+    """
+    Create validation plot comparing partition=1 (baseline) vs partition>1.
+    This helps verify that partition=1 shows no strategy differences (as expected).
+    """
+    print_section("BASELINE VALIDATION (Partition=1 Check)")
+    
+    if 'num_partitions_tested' not in df_full.columns:
+        print("⚠ Skipping: 'num_partitions_tested' column not found")
+        return
+    
+    df_baseline = df_full[df_full['num_partitions_tested'] == 1].copy()
+    
+    if len(df_baseline) == 0:
+        print("⚠ No partition=1 data found, skipping baseline validation")
+        return
+    
+    Path(output_dir).mkdir(exist_ok=True)
+    
+    # Check if strategies differ at partition=1 (they shouldn't!)
+    print(f"\n--- Partition=1 Strategy Comparison ---")
+    if 'strategy' in df_baseline.columns:
+        baseline_stats = df_baseline.groupby('strategy')['error_reduction'].agg(['mean', 'std', 'count'])
+        print(baseline_stats)
+        
+        # Calculate variance between strategies
+        strategy_means = baseline_stats['mean'].values
+        if len(strategy_means) > 1:
+            variance = np.var(strategy_means)
+            print(f"\nVariance between strategies: {variance:.6f}")
+            if variance > 0.01:
+                print("⚠ WARNING: Strategies differ significantly at partition=1!")
+                print("   This suggests a bug - all strategies should be identical with no distribution.")
+            else:
+                print("✓ Good: Strategies are similar at partition=1 (as expected)")
+    
+    # Create comparison plot
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    
+    # Left: Partition=1 by strategy
+    if 'strategy' in df_baseline.columns:
+        ax = axes[0]
+        strategies = sorted(df_baseline['strategy'].unique())
+        positions = np.arange(len(strategies))
+        
+        means = []
+        stds = []
+        for strategy in strategies:
+            data = df_baseline[df_baseline['strategy'] == strategy]['error_reduction']
+            means.append(data.mean())
+            stds.append(data.std())
+        
+        ax.bar(positions, means, yerr=stds, alpha=0.7, capsize=5)
+        ax.set_xticks(positions)
+        ax.set_xticklabels([s.upper() for s in strategies])
+        ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
+        ax.set_title('Partition=1: Strategy Comparison\n(Should be identical)', 
+                    fontsize=12, fontweight='bold')
+        ax.axhline(y=0, color='red', linestyle='--', alpha=0.5)
+        ax.grid(True, alpha=0.3, axis='y')
+    
+    # Right: Distribution of error reduction at partition=1
+    ax = axes[1]
+    ax.hist(df_baseline['error_reduction'], bins=20, alpha=0.7, edgecolor='black')
+    ax.axvline(df_baseline['error_reduction'].mean(), color='red', 
+              linestyle='--', linewidth=2, label=f"Mean: {df_baseline['error_reduction'].mean():.4f}")
+    ax.set_xlabel('Error Reduction', fontsize=12, fontweight='bold')
+    ax.set_ylabel('Frequency', fontsize=12, fontweight='bold')
+    ax.set_title('Partition=1: Error Reduction Distribution\n(No Distribution)', 
+                fontsize=12, fontweight='bold')
+    ax.legend()
+    ax.grid(True, alpha=0.3, axis='y')
+    
+    plt.tight_layout()
+    filepath = Path(output_dir) / 'fig0_baseline_validation_partition1.png'
+    plt.savefig(filepath, dpi=300, bbox_inches='tight')
+    print(f"\n✓ Saved: {filepath}")
+    plt.close()
 
 def plot_scalability(df, output_dir='figures'):
     """Create scalability analysis plots"""
@@ -467,8 +594,23 @@ def main():
     else:
         input_file = '../results.csv'
     
-    # Run analysis
+    # Load full dataset (including partition=1 for validation)
+    print_section("LOADING DATA")
+    try:
+        df_full = pd.read_csv(input_file)
+        print(f"✓ Loaded {len(df_full)} experiments from {input_file}")
+    except Exception as e:
+        print(f"✗ Error loading data: {e}")
+        print("\nUsage: python analyze_results.py [path_to_results.csv]")
+        sys.exit(1)
+    
+    # Create baseline validation plot (uses partition=1 data)
+    plot_baseline_validation(df_full)
+    
+    # Load and clean data (this filters out partition=1)
     df = load_and_clean_data(input_file)
+    
+    # Run main analysis on distributed data only (partition > 1)
     plot_scalability(df)
     statistical_analysis(df)
     
@@ -477,6 +619,8 @@ def main():
     for fig in sorted(Path('figures').glob('*.png')):
         print(f"  - {fig.name}")
     print("\n✓ All done!")
+    print("\nNote: Analysis excludes partition=1 data (no distribution occurs)")
+    print("      See fig0_baseline_validation_partition1.png for partition=1 check")
 
 if __name__ == "__main__":
     main()
