@@ -218,17 +218,57 @@ def plot_scalability(df, output_dir='figures'):
         print(f"✓ Saved: {filepath}")
         plt.close()
         
-        # Figure 2b: Heatmap of error reduction
-        fig, ax = plt.subplots(figsize=(8, 6))
+        # Custom aggregation function: trimmed mean (removes outliers)
+        def robust_mean(x):
+            """Calculate mean after removing outliers using IQR method"""
+            if len(x) < 3:  # Need at least 3 points
+                return x.mean()
+            
+            q1, q3 = np.percentile(x, [25, 75])
+            iqr = q3 - q1
+            lower_bound = q1 - 1.5 * iqr
+            upper_bound = q3 + 1.5 * iqr
+            
+            # Filter outliers
+            filtered = x[(x >= lower_bound) & (x <= upper_bound)]
+            
+            # Return mean of filtered data, or original mean if too few points remain
+            return filtered.mean() if len(filtered) >= 2 else x.mean()
+        
+        # Create pivot table with robust mean
         pivot_data = df.pivot_table(
             values='error_reduction',
             index='num_partitions_tested',
             columns='communication_noise_multiplier',
-            aggfunc='mean'
+            aggfunc=robust_mean
         )
         
-        sns.heatmap(pivot_data, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
-                   ax=ax, cbar_kws={'label': 'Error Reduction'})
+        # Create sample count pivot for reference
+        pivot_counts = df.pivot_table(
+            values='error_reduction',
+            index='num_partitions_tested',
+            columns='communication_noise_multiplier',
+            aggfunc='count'
+        )
+        
+        # Create annotations with value and sample size
+        annotations = []
+        for i in range(len(pivot_data.index)):
+            row = []
+            for j in range(len(pivot_data.columns)):
+                value = pivot_data.iloc[i, j]
+                count = pivot_counts.iloc[i, j]
+                if pd.notna(value) and pd.notna(count):
+                    row.append(f'{value:.3f}\n(n={int(count)})')
+                else:
+                    row.append('')
+            annotations.append(row)
+        
+        # Figure 2b: Error Reduction Heatmap (with outlier filtering)
+        fig, ax = plt.subplots(figsize=(8, 6))
+        sns.heatmap(pivot_data, annot=np.array(annotations), fmt='', cmap='RdYlGn', center=0,
+                   ax=ax, cbar_kws={'label': 'Error Reduction'}, 
+                   vmin=-0.1, vmax=0.1)  # Fixed scale for better comparison
         ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
         ax.set_ylabel('Number of Partitions', fontsize=12, fontweight='bold')
         ax.set_title('Error Reduction Heatmap', fontsize=14, fontweight='bold')
@@ -237,6 +277,21 @@ def plot_scalability(df, output_dir='figures'):
         filepath = Path(output_dir) / 'fig2b_error_reduction_heatmap.png'
         plt.savefig(filepath, dpi=300, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
+        plt.close()
+        
+        # Figure 2c: Sample Size Distribution Heatmap
+        fig, ax = plt.subplots(figsize=(8, 6))
+        sns.heatmap(pivot_counts, annot=True, fmt='g', cmap='Blues', 
+                   ax=ax, cbar_kws={'label': 'Sample Size'})
+        ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Number of Partitions', fontsize=12, fontweight='bold')
+        ax.set_title('Sample Size Distribution', fontsize=14, fontweight='bold')
+        
+        plt.tight_layout()
+        filepath = Path(output_dir) / 'fig2c_sample_size_heatmap.png'
+        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        print(f"✓ Saved: {filepath}")
+        print(f"  Sample sizes range: {int(pivot_counts.min().min())}-{int(pivot_counts.max().max())}")
         plt.close()
     
     # Figure 3a: Error Reduction by Local Noise
