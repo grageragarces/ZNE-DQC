@@ -261,6 +261,7 @@ def plot_scalability(df, output_dir='figures'):
     ax.legend(loc='best', frameon=True, shadow=True)
     ax.grid(True, alpha=0.3)
     ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
+    ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
     
     plt.tight_layout()
     filepath = Path(output_dir) / 'fig1a_error_reduction_vs_partitions.png'
@@ -286,6 +287,7 @@ def plot_scalability(df, output_dir='figures'):
     ax.set_title('Absolute Error vs Partitions', fontsize=14, fontweight='bold')
     ax.legend(loc='best', frameon=True, shadow=True)
     ax.grid(True, alpha=0.3)
+    ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
     
     plt.tight_layout()
     filepath = Path(output_dir) / 'fig1b_absolute_error_vs_partitions.png'
@@ -309,6 +311,7 @@ def plot_scalability(df, output_dir='figures'):
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=1.0, color='gray', linestyle='--', alpha=0.5, linewidth=1.5)
+        ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig1c_depth_overhead_vs_partitions.png'
@@ -490,6 +493,7 @@ def plot_scalability(df, output_dir='figures'):
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
+        ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig4a_performance_by_algorithm_family.png'
@@ -524,6 +528,7 @@ def plot_scalability(df, output_dir='figures'):
             ax.legend(loc='best', frameon=True, shadow=True)
             ax.grid(True, alpha=0.3)
             ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
+            ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
             
             plt.tight_layout()
             filepath = Path(output_dir) / f'fig4{chr(98+idx)}_strategy_comparison_{family}.png'
