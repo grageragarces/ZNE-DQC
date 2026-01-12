@@ -578,6 +578,72 @@ def statistical_analysis(df):
         if 'communication_noise_multiplier' in best_row:
             print(f"    Comm Noise Multiplier: {best_row['communication_noise_multiplier']}")
 
+# Add this function after plot_scalability()
+def plot_dual_metric_network_noise(df, output_dir='figures'):
+    """
+    Create side-by-side comparison of relative and absolute metrics vs network noise.
+    """
+    from pathlib import Path
+    Path(output_dir).mkdir(exist_ok=True)
+    
+    if 'communication_noise_multiplier' not in df.columns:
+        print("⚠️  Skipping: 'communication_noise_multiplier' not found")
+        return
+    
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    
+    # Left: Error Reduction (RELATIVE)
+    ax = axes[0]
+    for strategy in sorted(df['strategy'].unique()):
+        df_strat = df[df['strategy'] == strategy]
+        grouped = df_strat.groupby('communication_noise_multiplier').agg({
+            'error_reduction': ['mean', 'std', 'count']
+        })
+        
+        x = grouped.index
+        y = grouped['error_reduction']['mean']
+        err = grouped['error_reduction']['std'] / np.sqrt(grouped['error_reduction']['count'])
+        
+        ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
+        ax.fill_between(x, y-err, y+err, alpha=0.2)
+    
+    ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
+    ax.set_ylabel('Error Reduction (Relative)', fontsize=12, fontweight='bold')
+    ax.set_title('(a) Relative Improvement', fontsize=13, fontweight='bold')
+    ax.legend(loc='best', frameon=True, shadow=True, fontsize=10)
+    ax.grid(True, alpha=0.3)
+    ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
+    
+    # Right: ZNE Error (ABSOLUTE)
+    ax = axes[1]
+    for strategy in sorted(df['strategy'].unique()):
+        df_strat = df[df['strategy'] == strategy]
+        grouped = df_strat.groupby('communication_noise_multiplier').agg({
+            'zne_error': ['mean', 'std', 'count']
+        })
+        
+        x = grouped.index
+        y = grouped['zne_error']['mean']
+        err = grouped['zne_error']['std'] / np.sqrt(grouped['zne_error']['count'])
+        
+        ax.plot(x, y, marker='s', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
+        ax.fill_between(x, y-err, y+err, alpha=0.2)
+    
+    ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
+    ax.set_ylabel('ZNE Error (Absolute)', fontsize=12, fontweight='bold')
+    ax.set_title('(b) Absolute Final Error', fontsize=13, fontweight='bold')
+    ax.legend(loc='best', frameon=True, shadow=True, fontsize=10)
+    ax.grid(True, alpha=0.3)
+    
+    plt.suptitle('Network Noise Performance: Relative vs Absolute Metrics',
+                 fontsize=14, fontweight='bold', y=1.02)
+    plt.tight_layout()
+    
+    filepath = Path(output_dir) / 'fig2_dual_metric_network_noise.png'
+    plt.savefig(filepath, dpi=300, bbox_inches='tight')
+    print(f"✓ Saved: {filepath}")
+    plt.close()
+    
 def main():
     """Main analysis pipeline"""
     # Get input file
@@ -604,6 +670,7 @@ def main():
     
     # Run main analysis on distributed data only (partition > 1)
     plot_scalability(df)
+    plot_dual_metric_network_noise(df)
     statistical_analysis(df)
     
     print_section("ANALYSIS COMPLETE")
@@ -613,6 +680,7 @@ def main():
     print("\n✓ All done!")
     print("\nNote: Analysis excludes partition=1 data (no distribution occurs)")
     print("      See fig0_baseline_validation_partition1.png for partition=1 check")
+    
 
 if __name__ == "__main__":
     main()
