@@ -230,7 +230,10 @@ def plot_baseline_validation(df_full, output_dir='figures'):
     plt.tight_layout()
     filepath = Path(output_dir) / 'fig0_baseline_validation_partition1.svg'
     plt.savefig(filepath, bbox_inches='tight')
-    print(f"\n✓ Saved: {filepath}")
+    print(f"✓ Saved: {filepath}")
+    filepath_pdf = Path(output_dir) / 'fig0_baseline_validation_partition1.pdf'
+    plt.savefig(filepath_pdf, bbox_inches='tight')
+    print(f"✓ Saved: {filepath_pdf}")
     plt.close()
 
 def plot_scalability(df, output_dir='figures'):
@@ -288,6 +291,9 @@ def plot_scalability(df, output_dir='figures'):
     filepath = Path(output_dir) / 'fig1a_error_reduction_vs_partitions.svg'
     plt.savefig(filepath, bbox_inches='tight')
     print(f"✓ Saved: {filepath}")
+    filepath_pdf = Path(output_dir) / 'fig1a_error_reduction_vs_partitions.pdf'
+    plt.savefig(filepath_pdf, bbox_inches='tight')
+    print(f"✓ Saved: {filepath_pdf}")
     plt.close()
     
     # Figure 1b: ZNE Error vs Partitions (BAR CHART)
@@ -325,6 +331,9 @@ def plot_scalability(df, output_dir='figures'):
     filepath = Path(output_dir) / 'fig1b_absolute_error_vs_partitions.svg'
     plt.savefig(filepath, bbox_inches='tight')
     print(f"✓ Saved: {filepath}")
+    filepath_pdf = Path(output_dir) / 'fig1b_absolute_error_vs_partitions.pdf'
+    plt.savefig(filepath_pdf, bbox_inches='tight')
+    print(f"✓ Saved: {filepath_pdf}")
     plt.close()
     
     # Figure 1c: Depth Overhead vs Partitions (if available) - keep as line since it's overhead ratio
@@ -364,6 +373,9 @@ def plot_scalability(df, output_dir='figures'):
         filepath = Path(output_dir) / 'fig1c_depth_overhead_vs_partitions.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
+        filepath_pdf = Path(output_dir) / 'fig1c_depth_overhead_vs_partitions.pdf'
+        plt.savefig(filepath_pdf, bbox_inches='tight')
+        print(f"✓ Saved: {filepath_pdf}")
         plt.close()
     
     # Figure 2a: Error Reduction vs Network Noise by Strategy (BAR CHART)
@@ -410,6 +422,9 @@ def plot_scalability(df, output_dir='figures'):
         filepath = Path(output_dir) / 'fig2a_network_noise_resistance.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
+        filepath_pdf = Path(output_dir) / 'fig2a_network_noise_resistance.pdf'
+        plt.savefig(filepath_pdf, bbox_inches='tight')
+        print(f"✓ Saved: {filepath_pdf}")
         plt.close()
         
         # Custom aggregation function: trimmed mean (removes outliers)
@@ -465,6 +480,9 @@ def plot_scalability(df, output_dir='figures'):
         filepath = Path(output_dir) / 'fig2b_error_reduction_heatmap_global.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
+        filepath_pdf = Path(output_dir) / 'fig2b_error_reduction_heatmap_global.pdf'
+        plt.savefig(filepath_pdf, bbox_inches='tight')
+        print(f"✓ Saved: {filepath_pdf}")
         plt.close()
         
         # Figure 2c: Local Strategy Heatmap
@@ -485,6 +503,9 @@ def plot_scalability(df, output_dir='figures'):
         filepath = Path(output_dir) / 'fig2c_error_reduction_heatmap_local.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
+        filepath_pdf = Path(output_dir) / 'fig2c_error_reduction_heatmap_local.pdf'
+        plt.savefig(filepath_pdf, bbox_inches='tight')
+        print(f"✓ Saved: {filepath_pdf}")
         plt.close()
 
     
@@ -532,6 +553,9 @@ def plot_scalability(df, output_dir='figures'):
         filepath = Path(output_dir) / 'fig3a_performance_vs_local_noise.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
+        filepath_pdf = Path(output_dir) / 'fig3a_performance_vs_local_noise.pdf'
+        plt.savefig(filepath_pdf, bbox_inches='tight')
+        print(f"✓ Saved: {filepath_pdf}")
         plt.close()
         
         # Figure 3b: Box plot comparison (keep as box plot - it's a distribution visualization)
@@ -553,6 +577,9 @@ def plot_scalability(df, output_dir='figures'):
         filepath = Path(output_dir) / 'fig3b_strategy_performance_distribution.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
+        filepath_pdf = Path(output_dir) / 'fig3b_strategy_performance_distribution.pdf'
+        plt.savefig(filepath_pdf, bbox_inches='tight')
+        print(f"✓ Saved: {filepath_pdf}")
         plt.close()
     
     # Figure 4a: Error reduction by algorithm family (BAR CHART)
@@ -600,6 +627,9 @@ def plot_scalability(df, output_dir='figures'):
         filepath = Path(output_dir) / 'fig4a_performance_by_algorithm_family.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
+        filepath_pdf = Path(output_dir) / 'fig4a_performance_by_algorithm_family.pdf'
+        plt.savefig(filepath_pdf, bbox_inches='tight')
+        print(f"✓ Saved: {filepath_pdf}")
         plt.close()
         
         # Figures 4b-4d: Strategy comparison for each algorithm family (BAR CHARTS)
@@ -647,6 +677,9 @@ def plot_scalability(df, output_dir='figures'):
             filepath = Path(output_dir) / f'fig4{chr(98+idx)}_strategy_comparison_{family}.svg'
             plt.savefig(filepath, bbox_inches='tight')
             print(f"✓ Saved: {filepath}")
+            filepath_pdf = Path(output_dir) / f'fig4{chr(98+idx)}_strategy_comparison_{family}.pdf'
+            plt.savefig(filepath_pdf, bbox_inches='tight')
+            print(f"✓ Saved: {filepath_pdf}")
             plt.close()
 
 
@@ -799,6 +832,9 @@ def plot_dual_metric_network_noise(df, output_dir='figures'):
     filepath = Path(output_dir) / 'fig2_dual_metric_network_noise.svg'
     plt.savefig(filepath, bbox_inches='tight')
     print(f"✓ Saved: {filepath}")
+    filepath_pdf = Path(output_dir) / 'fig2_dual_metric_network_noise.pdf'
+    plt.savefig(filepath_pdf, bbox_inches='tight')
+    print(f"✓ Saved: {filepath_pdf}")
     plt.close()
     
 def main():
