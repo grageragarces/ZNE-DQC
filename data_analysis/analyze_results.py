@@ -21,6 +21,7 @@ sns.set_palette('husl')
 plt.rcParams['figure.dpi'] = 100
 plt.rcParams['savefig.dpi'] = 300
 plt.rcParams['figure.figsize'] = (12, 6)
+plt.rcParams['savefig.format'] = 'svg'  # Set default format to SVG
 
 def print_section(title):
     """Pretty print section headers"""
@@ -204,8 +205,8 @@ def plot_baseline_validation(df_full, output_dir='figures'):
         ax.bar(positions, means, yerr=stds, alpha=0.7, capsize=5)
         ax.set_xticks(positions)
         ax.set_xticklabels([s.upper() for s in strategies])
-        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
-        # ax.set_title('Partition=1: Strategy Comparison\n(Should be identical)', fontsize=15, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
+        # ax.set_title('Partition=1: Strategy Comparison\n(Should be identical)', fontsize=20, fontweight='bold')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5)
         ax.grid(True, alpha=0.3, axis='y')
     
@@ -214,128 +215,185 @@ def plot_baseline_validation(df_full, output_dir='figures'):
     ax.hist(df_baseline['error_reduction'], bins=20, alpha=0.7, edgecolor='black')
     ax.axvline(df_baseline['error_reduction'].mean(), color='red', 
               linestyle='--', linewidth=2, label=f"Mean: {df_baseline['error_reduction'].mean():.4f}")
-    ax.set_xlabel('Error Reduction', fontsize=15, fontweight='bold')
-    ax.set_ylabel('Frequency', fontsize=15, fontweight='bold')
-    # ax.set_title('Partition=1: Error Reduction Distribution\n(No Distribution)', fontsize=15, fontweight='bold')
-    ax.legend()
+    ax.set_xlabel('Error Reduction', fontsize=20, fontweight='bold')
+    ax.set_ylabel('Frequency', fontsize=20, fontweight='bold')
+    # ax.set_title('Partition=1: Error Reduction Distribution\n(No Distribution)', fontsize=20, fontweight='bold')
+    ax.legend(fontsize=15)
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    filepath = Path(output_dir) / 'fig0_baseline_validation_partition1.png'
+    filepath = Path(output_dir) / 'fig0_baseline_validation_partition1.svg'
     plt.savefig(filepath, bbox_inches='tight')
     print(f"\n✓ Saved: {filepath}")
     plt.close()
 
 def plot_scalability(df, output_dir='figures'):
-    """Create scalability analysis plots"""
+    """Create scalability analysis plots using bar charts"""
     print_section("GENERATING SCALABILITY PLOTS")
     
     Path(output_dir).mkdir(exist_ok=True)
     
-    # Figure 1a: Error Reduction vs Partitions
-    fig, ax = plt.subplots(figsize=(8, 6))
-    for strategy in sorted(df['strategy'].unique()):
+    # Figure 1a: Error Reduction vs Partitions (BAR CHART)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    strategies = sorted(df['strategy'].unique())
+    n_strategies = len(strategies)
+    
+    # Get unique partition values
+    partitions = sorted(df['num_partitions_tested'].unique())
+    n_partitions = len(partitions)
+    
+    # Set bar width and positions
+    bar_width = 0.8 / n_strategies
+    x_pos = np.arange(n_partitions)
+    
+    for idx, strategy in enumerate(strategies):
         df_strat = df[df['strategy'] == strategy]
         grouped = df_strat.groupby('num_partitions_tested').agg({
             'error_reduction': ['mean', 'std', 'count']
         })
         
-        x = grouped.index
-        y = grouped['error_reduction']['mean']
-        err = grouped['error_reduction']['std'] / np.sqrt(grouped['error_reduction']['count'])
+        # Align data to partition values
+        means = []
+        errors = []
+        for part in partitions:
+            if part in grouped.index:
+                means.append(grouped.loc[part, ('error_reduction', 'mean')])
+                err = grouped.loc[part, ('error_reduction', 'std')] / np.sqrt(grouped.loc[part, ('error_reduction', 'count')])
+                errors.append(err)
+            else:
+                means.append(0)
+                errors.append(0)
         
-        ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
-        ax.fill_between(x, y-err, y+err, alpha=0.2)
+        offset = (idx - n_strategies/2 + 0.5) * bar_width
+        ax.bar(x_pos + offset, means, bar_width, yerr=errors, 
+               label=strategy.upper(), alpha=0.8, capsize=4, error_kw={'linewidth': 1.5})
     
-    ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
-    ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
-    # ax.set_title('Scalability: Error Reduction vs Partitions', fontsize=14, fontweight='bold')
-    ax.legend(loc='best', frameon=True, shadow=True)
-    ax.grid(True, alpha=0.3)
+    ax.set_xlabel('Number of Partitions', fontsize=20, fontweight='bold')
+    ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels([str(p) for p in partitions])
+    ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
+    ax.grid(True, alpha=0.3, axis='y')
     ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
-    ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
     
     plt.tight_layout()
-    filepath = Path(output_dir) / 'fig1a_error_reduction_vs_partitions.png'
+    filepath = Path(output_dir) / 'fig1a_error_reduction_vs_partitions.svg'
     plt.savefig(filepath, bbox_inches='tight')
     print(f"✓ Saved: {filepath}")
     plt.close()
     
-    # Figure 1b: ZNE Error vs Partitions
-    fig, ax = plt.subplots(figsize=(8, 6))
-    for strategy in sorted(df['strategy'].unique()):
+    # Figure 1b: ZNE Error vs Partitions (BAR CHART)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    for idx, strategy in enumerate(strategies):
         df_strat = df[df['strategy'] == strategy]
         grouped = df_strat.groupby('num_partitions_tested')['zne_error'].agg(['mean', 'std', 'count'])
         
-        x = grouped.index
-        y = grouped['mean']
-        err = grouped['std'] / np.sqrt(grouped['count'])
+        means = []
+        errors = []
+        for part in partitions:
+            if part in grouped.index:
+                means.append(grouped.loc[part, 'mean'])
+                err = grouped.loc[part, 'std'] / np.sqrt(grouped.loc[part, 'count'])
+                errors.append(err)
+            else:
+                means.append(0)
+                errors.append(0)
         
-        ax.plot(x, y, marker='s', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
-        ax.fill_between(x, y-err, y+err, alpha=0.2)
+        offset = (idx - n_strategies/2 + 0.5) * bar_width
+        ax.bar(x_pos + offset, means, bar_width, yerr=errors,
+               label=strategy.upper(), alpha=0.8, capsize=4, error_kw={'linewidth': 1.5})
     
-    ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
-    ax.set_ylabel('ZNE Error', fontsize=15, fontweight='bold')
-    # ax.set_title('Absolute Error vs Partitions', fontsize=14, fontweight='bold')
-    ax.legend(loc='best', frameon=True, shadow=True)
-    ax.grid(True, alpha=0.3)
-    ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
+    ax.set_xlabel('Number of Partitions', fontsize=20, fontweight='bold')
+    ax.set_ylabel('ZNE Error', fontsize=20, fontweight='bold')
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels([str(p) for p in partitions])
+    ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
+    ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
-    filepath = Path(output_dir) / 'fig1b_absolute_error_vs_partitions.png'
+    filepath = Path(output_dir) / 'fig1b_absolute_error_vs_partitions.svg'
     plt.savefig(filepath, bbox_inches='tight')
     print(f"✓ Saved: {filepath}")
     plt.close()
     
-    # Figure 1c: Depth Overhead vs Partitions (if available)
+    # Figure 1c: Depth Overhead vs Partitions (if available) - keep as line since it's overhead ratio
     if 'depth_overhead' in df.columns:
-        fig, ax = plt.subplots(figsize=(8, 6))
-        for strategy in sorted(df['strategy'].unique()):
-            df_strat = df[df['strategy'] == strategy]
-            grouped = df_strat.groupby('num_partitions_tested')['depth_overhead'].mean()
-            
-            ax.plot(grouped.index, grouped.values, marker='^', linewidth=2.5, markersize=8, 
-                   label=strategy.upper(), alpha=0.8)
+        fig, ax = plt.subplots(figsize=(10, 6))
         
-        ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
-        ax.set_ylabel('Depth Overhead (ratio)', fontsize=15, fontweight='bold')
-        # ax.set_title('Circuit Depth Penalty', fontsize=14, fontweight='bold')
-        ax.legend(loc='best', frameon=True, shadow=True)
-        ax.grid(True, alpha=0.3)
+        for idx, strategy in enumerate(strategies):
+            df_strat = df[df['strategy'] == strategy]
+            grouped = df_strat.groupby('num_partitions_tested')['depth_overhead'].agg(['mean', 'std', 'count'])
+            
+            means = []
+            errors = []
+            for part in partitions:
+                if part in grouped.index:
+                    means.append(grouped.loc[part, 'mean'])
+                    err = grouped.loc[part, 'std'] / np.sqrt(grouped.loc[part, 'count'])
+                    errors.append(err)
+                else:
+                    means.append(np.nan)
+                    errors.append(0)
+            
+            offset = (idx - n_strategies/2 + 0.5) * bar_width
+            ax.bar(x_pos + offset, means, bar_width, yerr=errors,
+                   label=strategy.upper(), alpha=0.8, capsize=4, error_kw={'linewidth': 1.5})
+        
+        ax.set_xlabel('Number of Partitions', fontsize=20, fontweight='bold')
+        ax.set_ylabel('Depth Overhead (ratio)', fontsize=20, fontweight='bold')
+        ax.set_xticks(x_pos)
+        ax.set_xticklabels([str(p) for p in partitions])
+        ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
+        ax.grid(True, alpha=0.3, axis='y')
         ax.axhline(y=1.0, color='gray', linestyle='--', alpha=0.5, linewidth=1.5)
-        ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
         
         plt.tight_layout()
-        filepath = Path(output_dir) / 'fig1c_depth_overhead_vs_partitions.png'
+        filepath = Path(output_dir) / 'fig1c_depth_overhead_vs_partitions.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
     
-    # Figure 2a: Error Reduction vs Network Noise by Strategy
+    # Figure 2a: Error Reduction vs Network Noise by Strategy (BAR CHART)
     if 'communication_noise_multiplier' in df.columns:
-        fig, ax = plt.subplots(figsize=(8, 6))
-        for strategy in sorted(df['strategy'].unique()):
+        fig, ax = plt.subplots(figsize=(10, 6))
+        
+        noise_levels = sorted(df['communication_noise_multiplier'].unique())
+        n_noise = len(noise_levels)
+        x_pos = np.arange(n_noise)
+        bar_width = 0.8 / n_strategies
+        
+        for idx, strategy in enumerate(strategies):
             df_strat = df[df['strategy'] == strategy]
             grouped = df_strat.groupby('communication_noise_multiplier').agg({
                 'error_reduction': ['mean', 'std', 'count']
             })
             
-            x = grouped.index
-            y = grouped['error_reduction']['mean']
-            err = grouped['error_reduction']['std'] / np.sqrt(grouped['error_reduction']['count'])
+            means = []
+            errors = []
+            for noise in noise_levels:
+                if noise in grouped.index:
+                    means.append(grouped.loc[noise, ('error_reduction', 'mean')])
+                    err = grouped.loc[noise, ('error_reduction', 'std')] / np.sqrt(grouped.loc[noise, ('error_reduction', 'count')])
+                    errors.append(err)
+                else:
+                    means.append(0)
+                    errors.append(0)
             
-            ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
-            ax.fill_between(x, y-err, y+err, alpha=0.2)
+            offset = (idx - n_strategies/2 + 0.5) * bar_width
+            ax.bar(x_pos + offset, means, bar_width, yerr=errors,
+                   label=strategy.upper(), alpha=0.8, capsize=4, error_kw={'linewidth': 1.5})
         
-        ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
-        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
-        # ax.set_title('Network Noise Resistance', fontsize=14, fontweight='bold')
-        ax.legend(loc='best', frameon=True, shadow=True)
-        ax.grid(True, alpha=0.3)
+        ax.set_xlabel('Communication Noise Multiplier', fontsize=20, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
+        ax.set_xticks(x_pos)
+        ax.set_xticklabels([f'{n:.1f}' for n in noise_levels])
+        ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
+        ax.grid(True, alpha=0.3, axis='y')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
         
         plt.tight_layout()
-        filepath = Path(output_dir) / 'fig2a_network_noise_resistance.png'
+        filepath = Path(output_dir) / 'fig2a_network_noise_resistance.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
@@ -380,12 +438,12 @@ def plot_scalability(df, output_dir='figures'):
         sns.heatmap(pivot_global, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
                    ax=ax, cbar_kws={'label': 'Error Reduction'}, 
                    vmin=-0.1, vmax=0.2)
-        ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
-        ax.set_ylabel('Number of Partitions', fontsize=15, fontweight='bold')
+        ax.set_xlabel('Communication Noise Multiplier', fontsize=20, fontweight='bold')
+        ax.set_ylabel('Number of Partitions', fontsize=20, fontweight='bold')
         # ax.set_title('Error Reduction Heatmap: Global ZNE', fontsize=14, fontweight='bold')
         
         plt.tight_layout()
-        filepath = Path(output_dir) / 'fig2b_error_reduction_heatmap_global.png'
+        filepath = Path(output_dir) / 'fig2b_error_reduction_heatmap_global.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
@@ -395,124 +453,163 @@ def plot_scalability(df, output_dir='figures'):
         sns.heatmap(pivot_local, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
                    ax=ax, cbar_kws={'label': 'Error Reduction'}, 
                    vmin=-0.1, vmax=0.2)
-        ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
-        ax.set_ylabel('Number of Partitions', fontsize=15, fontweight='bold')
+        ax.set_xlabel('Communication Noise Multiplier', fontsize=20, fontweight='bold')
+        ax.set_ylabel('Number of Partitions', fontsize=20, fontweight='bold')
         # ax.set_title('Error Reduction Heatmap: Local ZNE', fontsize=14, fontweight='bold')
         
         plt.tight_layout()
-        filepath = Path(output_dir) / 'fig2c_error_reduction_heatmap_local.png'
+        filepath = Path(output_dir) / 'fig2c_error_reduction_heatmap_local.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
 
     
-    # Figure 3a: Error Reduction by Local Noise
+    # Figure 3a: Error Reduction by Local Noise (BAR CHART)
     if 'local_noise' in df.columns:
-        fig, ax = plt.subplots(figsize=(8, 6))
-        for strategy in sorted(df['strategy'].unique()):
+        fig, ax = plt.subplots(figsize=(10, 6))
+        
+        noise_levels = sorted(df['local_noise'].unique())
+        n_noise = len(noise_levels)
+        x_pos = np.arange(n_noise)
+        bar_width = 0.8 / n_strategies
+        
+        for idx, strategy in enumerate(strategies):
             df_strat = df[df['strategy'] == strategy]
             grouped = df_strat.groupby('local_noise').agg({
                 'error_reduction': ['mean', 'std', 'count']
             })
             
-            x = grouped.index
-            y = grouped['error_reduction']['mean']
-            err = grouped['error_reduction']['std'] / np.sqrt(grouped['error_reduction']['count'])
+            means = []
+            errors = []
+            for noise in noise_levels:
+                if noise in grouped.index:
+                    means.append(grouped.loc[noise, ('error_reduction', 'mean')])
+                    err = grouped.loc[noise, ('error_reduction', 'std')] / np.sqrt(grouped.loc[noise, ('error_reduction', 'count')])
+                    errors.append(err)
+                else:
+                    means.append(0)
+                    errors.append(0)
             
-            ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
-            ax.fill_between(x, y-err, y+err, alpha=0.2)
+            offset = (idx - n_strategies/2 + 0.5) * bar_width
+            ax.bar(x_pos + offset, means, bar_width, yerr=errors,
+                   label=strategy.upper(), alpha=0.8, capsize=4, error_kw={'linewidth': 1.5})
         
-        ax.set_xlabel('Local Noise Level', fontsize=15, fontweight='bold')
-        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
-        # ax.set_title('Performance vs Local Noise', fontsize=14, fontweight='bold')
-        ax.legend(loc='best', frameon=True, shadow=True)
-        ax.grid(True, alpha=0.3)
+        ax.set_xlabel('Local Noise Level', fontsize=20, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
+        ax.set_xticks(x_pos)
+        ax.set_xticklabels([f'{n:.3f}' for n in noise_levels])
+        ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
+        ax.grid(True, alpha=0.3, axis='y')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
         
         plt.tight_layout()
-        filepath = Path(output_dir) / 'fig3a_performance_vs_local_noise.png'
+        filepath = Path(output_dir) / 'fig3a_performance_vs_local_noise.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
         
-        # Figure 3b: Box plot comparison
+        # Figure 3b: Box plot comparison (keep as box plot - it's a distribution visualization)
         fig, ax = plt.subplots(figsize=(8, 6))
         df_plot = df[['strategy', 'error_reduction']].copy()
         sns.boxplot(data=df_plot, x='strategy', y='error_reduction', ax=ax, palette='Set2')
-        ax.set_xlabel('Strategy', fontsize=15, fontweight='bold')
-        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
+        ax.set_xlabel('Strategy', fontsize=20, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
         # ax.set_title('Strategy Performance Distribution', fontsize=14, fontweight='bold')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
         ax.grid(True, alpha=0.3, axis='y')
         
         plt.tight_layout()
-        filepath = Path(output_dir) / 'fig3b_strategy_performance_distribution.png'
+        filepath = Path(output_dir) / 'fig3b_strategy_performance_distribution.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
     
-    # Figure 4a: Error reduction by algorithm family (overview)
+    # Figure 4a: Error reduction by algorithm family (BAR CHART)
     if 'algorithm_family' in df.columns:
         families = sorted(df['algorithm_family'].value_counts().head(3).index)
+        n_families = len(families)
         
-        fig, ax = plt.subplots(figsize=(8, 6))
-        for family in families:
+        fig, ax = plt.subplots(figsize=(10, 6))
+        
+        x_pos = np.arange(n_partitions)
+        bar_width = 0.8 / n_families
+        
+        for idx, family in enumerate(families):
             df_fam = df[df['algorithm_family'] == family]
             grouped = df_fam.groupby('num_partitions_tested').agg({
                 'error_reduction': ['mean', 'std', 'count']
             })
             
-            x = grouped.index
-            y = grouped['error_reduction']['mean']
-            err = grouped['error_reduction']['std'] / np.sqrt(grouped['error_reduction']['count'])
+            means = []
+            errors = []
+            for part in partitions:
+                if part in grouped.index:
+                    means.append(grouped.loc[part, ('error_reduction', 'mean')])
+                    err = grouped.loc[part, ('error_reduction', 'std')] / np.sqrt(grouped.loc[part, ('error_reduction', 'count')])
+                    errors.append(err)
+                else:
+                    means.append(0)
+                    errors.append(0)
             
-            ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=family.upper(), alpha=0.8)
-            ax.fill_between(x, y-err, y+err, alpha=0.2)
+            offset = (idx - n_families/2 + 0.5) * bar_width
+            ax.bar(x_pos + offset, means, bar_width, yerr=errors,
+                   label=family.upper(), alpha=0.8, capsize=4, error_kw={'linewidth': 1.5})
         
-        ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
-        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
-        # ax.set_title('Performance by Algorithm Family', fontsize=14, fontweight='bold')
-        ax.legend(loc='best', frameon=True, shadow=True)
-        ax.grid(True, alpha=0.3)
+        ax.set_xlabel('Number of Partitions', fontsize=20, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
+        ax.set_xticks(x_pos)
+        ax.set_xticklabels([str(p) for p in partitions])
+        ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
+        ax.grid(True, alpha=0.3, axis='y')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
-        ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
         
         plt.tight_layout()
-        filepath = Path(output_dir) / 'fig4a_performance_by_algorithm_family.png'
+        filepath = Path(output_dir) / 'fig4a_performance_by_algorithm_family.svg'
         plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
         
-        # Figures 4b-4d: Strategy comparison for each algorithm family
+        # Figures 4b-4d: Strategy comparison for each algorithm family (BAR CHARTS)
         for idx, family in enumerate(families):
-            fig, ax = plt.subplots(figsize=(8, 6))
+            fig, ax = plt.subplots(figsize=(10, 6))
             df_fam = df[df['algorithm_family'] == family]
             
-            for strategy in sorted(df_fam['strategy'].unique()):
+            family_strategies = sorted(df_fam['strategy'].unique())
+            n_fam_strat = len(family_strategies)
+            bar_width = 0.8 / n_fam_strat
+            
+            for s_idx, strategy in enumerate(family_strategies):
                 df_strat = df_fam[df_fam['strategy'] == strategy]
                 grouped = df_strat.groupby('num_partitions_tested').agg({
                     'error_reduction': ['mean', 'std', 'count']
                 })
                 
                 if len(grouped) > 0:
-                    x = grouped.index
-                    y = grouped['error_reduction']['mean']
-                    err = grouped['error_reduction']['std'] / np.sqrt(grouped['error_reduction']['count'])
+                    means = []
+                    errors = []
+                    for part in partitions:
+                        if part in grouped.index:
+                            means.append(grouped.loc[part, ('error_reduction', 'mean')])
+                            err = grouped.loc[part, ('error_reduction', 'std')] / np.sqrt(grouped.loc[part, ('error_reduction', 'count')])
+                            errors.append(err)
+                        else:
+                            means.append(0)
+                            errors.append(0)
                     
-                    ax.plot(x, y, marker='s', linewidth=2.5, markersize=8,
-                           label=strategy.upper(), alpha=0.8)
-                    ax.fill_between(x, y-err, y+err, alpha=0.2)
+                    offset = (s_idx - n_fam_strat/2 + 0.5) * bar_width
+                    ax.bar(x_pos + offset, means, bar_width, yerr=errors,
+                           label=strategy.upper(), alpha=0.8, capsize=4, error_kw={'linewidth': 1.5})
             
-            ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
-            ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
-            # ax.set_title(f'Strategy Comparison: {family.upper()} Circuits', fontsize=14, fontweight='bold')
-            ax.legend(loc='best', frameon=True, shadow=True)
-            ax.grid(True, alpha=0.3)
+            ax.set_xlabel('Number of Partitions', fontsize=20, fontweight='bold')
+            ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
+            ax.set_xticks(x_pos)
+            ax.set_xticklabels([str(p) for p in partitions])
+            ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
+            ax.grid(True, alpha=0.3, axis='y')
             ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
-            ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
             
             plt.tight_layout()
-            filepath = Path(output_dir) / f'fig4{chr(98+idx)}_strategy_comparison_{family}.png'
+            filepath = Path(output_dir) / f'fig4{chr(98+idx)}_strategy_comparison_{family}.svg'
             plt.savefig(filepath, bbox_inches='tight')
             print(f"✓ Saved: {filepath}")
             plt.close()
@@ -575,7 +672,7 @@ def statistical_analysis(df):
 # Add this function after plot_scalability()
 def plot_dual_metric_network_noise(df, output_dir='figures'):
     """
-    Create side-by-side comparison of relative and absolute metrics vs network noise.
+    Create side-by-side comparison of relative and absolute metrics vs network noise (BAR CHARTS).
     """
     from pathlib import Path
     Path(output_dir).mkdir(exist_ok=True)
@@ -584,56 +681,83 @@ def plot_dual_metric_network_noise(df, output_dir='figures'):
         print("⚠️  Skipping: 'communication_noise_multiplier' not found")
         return
     
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
     
-    # Left: Error Reduction (RELATIVE)
+    strategies = sorted(df['strategy'].unique())
+    n_strategies = len(strategies)
+    noise_levels = sorted(df['communication_noise_multiplier'].unique())
+    n_noise = len(noise_levels)
+    x_pos = np.arange(n_noise)
+    bar_width = 0.8 / n_strategies
+    
+    # Left: Error Reduction (RELATIVE) - BAR CHART
     ax = axes[0]
-    for strategy in sorted(df['strategy'].unique()):
+    for idx, strategy in enumerate(strategies):
         df_strat = df[df['strategy'] == strategy]
         grouped = df_strat.groupby('communication_noise_multiplier').agg({
             'error_reduction': ['mean', 'std', 'count']
         })
         
-        x = grouped.index
-        y = grouped['error_reduction']['mean']
-        err = grouped['error_reduction']['std'] / np.sqrt(grouped['error_reduction']['count'])
+        means = []
+        errors = []
+        for noise in noise_levels:
+            if noise in grouped.index:
+                means.append(grouped.loc[noise, ('error_reduction', 'mean')])
+                err = grouped.loc[noise, ('error_reduction', 'std')] / np.sqrt(grouped.loc[noise, ('error_reduction', 'count')])
+                errors.append(err)
+            else:
+                means.append(0)
+                errors.append(0)
         
-        ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
-        ax.fill_between(x, y-err, y+err, alpha=0.2)
+        offset = (idx - n_strategies/2 + 0.5) * bar_width
+        ax.bar(x_pos + offset, means, bar_width, yerr=errors,
+               label=strategy.upper(), alpha=0.8, capsize=4, error_kw={'linewidth': 1.5})
     
-    ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
-    ax.set_ylabel('Error Reduction (Relative)', fontsize=15, fontweight='bold')
+    ax.set_xlabel('Communication Noise Multiplier', fontsize=20, fontweight='bold')
+    ax.set_ylabel('Error Reduction (Relative)', fontsize=20, fontweight='bold')
     ax.set_title('(a) Relative Improvement', fontsize=13, fontweight='bold')
-    ax.legend(loc='best', frameon=True, shadow=True, fontsize=10)
-    ax.grid(True, alpha=0.3)
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels([f'{n:.1f}' for n in noise_levels])
+    ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
+    ax.grid(True, alpha=0.3, axis='y')
     ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
     
-    # Right: ZNE Error (ABSOLUTE)
+    # Right: ZNE Error (ABSOLUTE) - BAR CHART
     ax = axes[1]
-    for strategy in sorted(df['strategy'].unique()):
+    for idx, strategy in enumerate(strategies):
         df_strat = df[df['strategy'] == strategy]
         grouped = df_strat.groupby('communication_noise_multiplier').agg({
             'zne_error': ['mean', 'std', 'count']
         })
         
-        x = grouped.index
-        y = grouped['zne_error']['mean']
-        err = grouped['zne_error']['std'] / np.sqrt(grouped['zne_error']['count'])
+        means = []
+        errors = []
+        for noise in noise_levels:
+            if noise in grouped.index:
+                means.append(grouped.loc[noise, ('zne_error', 'mean')])
+                err = grouped.loc[noise, ('zne_error', 'std')] / np.sqrt(grouped.loc[noise, ('zne_error', 'count')])
+                errors.append(err)
+            else:
+                means.append(0)
+                errors.append(0)
         
-        ax.plot(x, y, marker='s', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
-        ax.fill_between(x, y-err, y+err, alpha=0.2)
+        offset = (idx - n_strategies/2 + 0.5) * bar_width
+        ax.bar(x_pos + offset, means, bar_width, yerr=errors,
+               label=strategy.upper(), alpha=0.8, capsize=4, error_kw={'linewidth': 1.5})
     
-    ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
-    ax.set_ylabel('ZNE Error (Absolute)', fontsize=15, fontweight='bold')
+    ax.set_xlabel('Communication Noise Multiplier', fontsize=20, fontweight='bold')
+    ax.set_ylabel('ZNE Error (Absolute)', fontsize=20, fontweight='bold')
     ax.set_title('(b) Absolute Final Error', fontsize=13, fontweight='bold')
-    ax.legend(loc='best', frameon=True, shadow=True, fontsize=10)
-    ax.grid(True, alpha=0.3)
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels([f'{n:.1f}' for n in noise_levels])
+    ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
+    ax.grid(True, alpha=0.3, axis='y')
     
     plt.suptitle('Network Noise Performance: Relative vs Absolute Metrics',
                  fontsize=14, fontweight='bold', y=1.02)
     plt.tight_layout()
     
-    filepath = Path(output_dir) / 'fig2_dual_metric_network_noise.png'
+    filepath = Path(output_dir) / 'fig2_dual_metric_network_noise.svg'
     plt.savefig(filepath, bbox_inches='tight')
     print(f"✓ Saved: {filepath}")
     plt.close()
@@ -669,11 +793,11 @@ def main():
     
     print_section("ANALYSIS COMPLETE")
     print("\nGenerated files in 'figures/' directory:")
-    for fig in sorted(Path('figures').glob('*.png')):
+    for fig in sorted(Path('figures').glob('*.svg')):
         print(f"  - {fig.name}")
     print("\n✓ All done!")
     print("\nNote: Analysis excludes partition=1 data (no distribution occurs)")
-    print("      See fig0_baseline_validation_partition1.png for partition=1 check")
+    print("      See fig0_baseline_validation_partition1.svg for partition=1 check")
     
 
 if __name__ == "__main__":
