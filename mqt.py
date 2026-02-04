@@ -1,10 +1,5 @@
 """
-Parallelized MQT experiment runner - MUCH faster!
-Key improvements:
-1. Multi-process parallel execution
-2. Thread-safe result saving with locks
-3. Batch progress updates to reduce I/O overhead
-4. Estimated completion time tracking
+Parallelized MQT experiment runner for MQT Bench circuits.
 """
 
 import os
