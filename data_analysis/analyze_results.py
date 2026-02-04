@@ -22,6 +22,8 @@ plt.rcParams['figure.dpi'] = 100
 plt.rcParams['savefig.dpi'] = 300
 plt.rcParams['figure.figsize'] = (12, 6)
 plt.rcParams['savefig.format'] = 'svg'  # Set default format to SVG
+plt.rcParams['xtick.labelsize'] = 15
+plt.rcParams['ytick.labelsize'] = 15
 
 def print_section(title):
     """Pretty print section headers"""
@@ -206,6 +208,8 @@ def plot_baseline_validation(df_full, output_dir='figures'):
         ax.set_xticks(positions)
         ax.set_xticklabels([s.upper() for s in strategies])
         ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
+        ax.tick_params(axis='x', labelsize=15)
+        ax.tick_params(axis='y', labelsize=15)
         # ax.set_title('Partition=1: Strategy Comparison\n(Should be identical)', fontsize=20, fontweight='bold')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5)
         ax.grid(True, alpha=0.3, axis='y')
@@ -217,6 +221,8 @@ def plot_baseline_validation(df_full, output_dir='figures'):
               linestyle='--', linewidth=2, label=f"Mean: {df_baseline['error_reduction'].mean():.4f}")
     ax.set_xlabel('Error Reduction', fontsize=20, fontweight='bold')
     ax.set_ylabel('Frequency', fontsize=20, fontweight='bold')
+    ax.tick_params(axis='x', labelsize=15)
+    ax.tick_params(axis='y', labelsize=15)
     # ax.set_title('Partition=1: Error Reduction Distribution\n(No Distribution)', fontsize=20, fontweight='bold')
     ax.legend(fontsize=15)
     ax.grid(True, alpha=0.3, axis='y')
@@ -272,6 +278,8 @@ def plot_scalability(df, output_dir='figures'):
     ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
     ax.set_xticks(x_pos)
     ax.set_xticklabels([str(p) for p in partitions])
+    ax.tick_params(axis='x', labelsize=15)
+    ax.tick_params(axis='y', labelsize=15)
     ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
     ax.grid(True, alpha=0.3, axis='y')
     ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -308,6 +316,8 @@ def plot_scalability(df, output_dir='figures'):
     ax.set_ylabel('ZNE Error', fontsize=20, fontweight='bold')
     ax.set_xticks(x_pos)
     ax.set_xticklabels([str(p) for p in partitions])
+    ax.tick_params(axis='x', labelsize=15)
+    ax.tick_params(axis='y', labelsize=15)
     ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
     ax.grid(True, alpha=0.3, axis='y')
     
@@ -344,6 +354,8 @@ def plot_scalability(df, output_dir='figures'):
         ax.set_ylabel('Depth Overhead (ratio)', fontsize=20, fontweight='bold')
         ax.set_xticks(x_pos)
         ax.set_xticklabels([str(p) for p in partitions])
+        ax.tick_params(axis='x', labelsize=15)
+        ax.tick_params(axis='y', labelsize=15)
         ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
         ax.grid(True, alpha=0.3, axis='y')
         ax.axhline(y=1.0, color='gray', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -388,6 +400,8 @@ def plot_scalability(df, output_dir='figures'):
         ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
         ax.set_xticks(x_pos)
         ax.set_xticklabels([f'{n:.1f}' for n in noise_levels])
+        ax.tick_params(axis='x', labelsize=15)
+        ax.tick_params(axis='y', labelsize=15)
         ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
         ax.grid(True, alpha=0.3, axis='y')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -435,11 +449,16 @@ def plot_scalability(df, output_dir='figures'):
         
         # Figure 2b: Global Strategy Heatmap
         fig, ax = plt.subplots(figsize=(8, 6))
-        sns.heatmap(pivot_global, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
+        heatmap = sns.heatmap(pivot_global, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
                    ax=ax, cbar_kws={'label': 'Error Reduction'}, 
-                   vmin=-0.1, vmax=0.2)
+                   vmin=-0.1, vmax=0.2, annot_kws={'fontsize': 15})
+        cbar = heatmap.collections[0].colorbar
+        cbar.set_label('Error Reduction', fontsize=15)
+        cbar.ax.tick_params(labelsize=15)
         ax.set_xlabel('Communication Noise Multiplier', fontsize=20, fontweight='bold')
         ax.set_ylabel('Number of Partitions', fontsize=20, fontweight='bold')
+        ax.tick_params(axis='x', labelsize=15)
+        ax.tick_params(axis='y', labelsize=15)
         # ax.set_title('Error Reduction Heatmap: Global ZNE', fontsize=14, fontweight='bold')
         
         plt.tight_layout()
@@ -450,11 +469,16 @@ def plot_scalability(df, output_dir='figures'):
         
         # Figure 2c: Local Strategy Heatmap
         fig, ax = plt.subplots(figsize=(8, 6))
-        sns.heatmap(pivot_local, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
+        heatmap = sns.heatmap(pivot_local, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
                    ax=ax, cbar_kws={'label': 'Error Reduction'}, 
-                   vmin=-0.1, vmax=0.2)
+                   vmin=-0.1, vmax=0.2, annot_kws={'fontsize': 15})
+        cbar = heatmap.collections[0].colorbar
+        cbar.set_label('Error Reduction', fontsize=15)
+        cbar.ax.tick_params(labelsize=15)
         ax.set_xlabel('Communication Noise Multiplier', fontsize=20, fontweight='bold')
         ax.set_ylabel('Number of Partitions', fontsize=20, fontweight='bold')
+        ax.tick_params(axis='x', labelsize=15)
+        ax.tick_params(axis='y', labelsize=15)
         # ax.set_title('Error Reduction Heatmap: Local ZNE', fontsize=14, fontweight='bold')
         
         plt.tight_layout()
@@ -498,6 +522,8 @@ def plot_scalability(df, output_dir='figures'):
         ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
         ax.set_xticks(x_pos)
         ax.set_xticklabels([f'{n:.3f}' for n in noise_levels])
+        ax.tick_params(axis='x', labelsize=15)
+        ax.tick_params(axis='y', labelsize=15)
         ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
         ax.grid(True, alpha=0.3, axis='y')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -511,9 +537,14 @@ def plot_scalability(df, output_dir='figures'):
         # Figure 3b: Box plot comparison (keep as box plot - it's a distribution visualization)
         fig, ax = plt.subplots(figsize=(8, 6))
         df_plot = df[['strategy', 'error_reduction']].copy()
-        sns.boxplot(data=df_plot, x='strategy', y='error_reduction', ax=ax, palette='Set2')
+        # Custom colors matching fig2: pink for global, brownish for local
+        custom_palette = {'global': '#f77189', 'local': '#bb9832'}
+        sns.boxplot(data=df_plot, x='strategy', y='error_reduction', ax=ax, palette=custom_palette)
         ax.set_xlabel('Strategy', fontsize=20, fontweight='bold')
         ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
+        # Set tick label sizes
+        ax.tick_params(axis='x', labelsize=15)
+        ax.tick_params(axis='y', labelsize=15)
         # ax.set_title('Strategy Performance Distribution', fontsize=14, fontweight='bold')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
         ax.grid(True, alpha=0.3, axis='y')
@@ -559,6 +590,8 @@ def plot_scalability(df, output_dir='figures'):
         ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
         ax.set_xticks(x_pos)
         ax.set_xticklabels([str(p) for p in partitions])
+        ax.tick_params(axis='x', labelsize=15)
+        ax.tick_params(axis='y', labelsize=15)
         ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
         ax.grid(True, alpha=0.3, axis='y')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -604,6 +637,8 @@ def plot_scalability(df, output_dir='figures'):
             ax.set_ylabel('Error Reduction', fontsize=20, fontweight='bold')
             ax.set_xticks(x_pos)
             ax.set_xticklabels([str(p) for p in partitions])
+            ax.tick_params(axis='x', labelsize=15)
+            ax.tick_params(axis='y', labelsize=15)
             ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
             ax.grid(True, alpha=0.3, axis='y')
             ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -718,6 +753,8 @@ def plot_dual_metric_network_noise(df, output_dir='figures'):
     ax.set_title('(a) Relative Improvement', fontsize=13, fontweight='bold')
     ax.set_xticks(x_pos)
     ax.set_xticklabels([f'{n:.1f}' for n in noise_levels])
+    ax.tick_params(axis='x', labelsize=15)
+    ax.tick_params(axis='y', labelsize=15)
     ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
     ax.grid(True, alpha=0.3, axis='y')
     ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
@@ -750,6 +787,8 @@ def plot_dual_metric_network_noise(df, output_dir='figures'):
     ax.set_title('(b) Absolute Final Error', fontsize=13, fontweight='bold')
     ax.set_xticks(x_pos)
     ax.set_xticklabels([f'{n:.1f}' for n in noise_levels])
+    ax.tick_params(axis='x', labelsize=15)
+    ax.tick_params(axis='y', labelsize=15)
     ax.legend(loc='best', frameon=True, shadow=True, fontsize=15)
     ax.grid(True, alpha=0.3, axis='y')
     
