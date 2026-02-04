@@ -2,13 +2,7 @@
 ZNE Distributed Quantum Computing Analysis
 Analyzes results from main_reduced.ipynb experiments
 
-IMPORTANT: This script filters out partition=1 data from main analysis.
-- Partition=1 means NO distribution (circuit runs as single unit)
-- All strategies should be identical at partition=1
-- Communication parameters have no effect at partition=1
-- See fig0_baseline_validation_partition1.png to verify partition=1 behavior
-
-Usage: python analyze_results.py ../results.csv
+Note: filters out partition=1 data from main analysis.
 """
 
 import pandas as pd

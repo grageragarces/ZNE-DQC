@@ -326,10 +326,6 @@ def main():
     else:
         input_file = '../results.csv'
     
-    print("\n" + "="*80)
-    print("  LOADING DATA")
-    print("="*80)
-    
     try:
         df_full = pd.read_csv(input_file)
         print(f"✓ Loaded {len(df_full)} experiments from {input_file}")

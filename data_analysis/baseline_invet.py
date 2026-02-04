@@ -11,10 +11,6 @@ def investigate_zero_baseline(df):
     Find experiments with suspiciously low baseline error.
     """
     
-    print("\n" + "="*80)
-    print("INVESTIGATING ZERO/NEAR-ZERO BASELINE ERRORS")
-    print("="*80)
-    
     # Filter to distributed only
     if 'num_partitions_tested' in df.columns:
         df = df[df['num_partitions_tested'] > 1].copy()
@@ -30,9 +26,6 @@ def investigate_zero_baseline(df):
     print(f"Normal (noisy_error >= 0.01):    {len(normal):4d} ({len(normal)/len(df)*100:5.1f}%)")
     
     if len(perfect) > 0:
-        print("\n" + "="*80)
-        print("PERFECT BASELINE CASES (noisy_error = 0.0)")
-        print("="*80)
         print("\nThese are SUSPICIOUS - noisy simulations shouldn't produce zero error!")
         
         # Analyze by algorithm
@@ -92,10 +85,7 @@ def investigate_zero_baseline(df):
                 print(f"  Circuit depth: {row['circuit_depth']}")
     
     # Hypothesis testing
-    print("\n" + "="*80)
-    print("HYPOTHESIS TESTING")
-    print("="*80)
-    
+
     # H1: Are perfect baselines more common in certain algorithms?
     if len(perfect) > 0 and 'origin' in df.columns:
         print("\nH1: Are certain algorithms more likely to have zero baseline?")
@@ -127,10 +117,6 @@ def investigate_zero_baseline(df):
             strat_df = df[df['strategy'] == strat]
             perfect_rate = (strat_df['noisy_error'] == 0).sum() / len(strat_df) * 100
             print(f"  {strat:10s}: {perfect_rate:5.1f}% have zero baseline")
-    
-    print("\n" + "="*80)
-    print("DIAGNOSIS & RECOMMENDATIONS")
-    print("="*80)
     
     if len(perfect) > 0:
         print("\n⚠️  CRITICAL ISSUE: You have experiments with ZERO baseline error!")

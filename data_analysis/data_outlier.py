@@ -16,10 +16,6 @@ def investigate_outliers(df):
     Analyze extreme error_reduction values to understand their cause.
     """
     
-    print("\n" + "="*80)
-    print("INVESTIGATING EXTREME ERROR_REDUCTION OUTLIERS")
-    print("="*80)
-    
     # Separate into categories
     extreme_negative = df[df['error_reduction'] < -2.0].copy()
     extreme_positive = df[df['error_reduction'] > 2.0].copy()
@@ -148,40 +144,6 @@ def investigate_outliers(df):
     print(f"\n✓ Saved visualization: figures/outlier_investigation.png")
     plt.close()
     
-    # Recommendation
-    print("\n" + "="*80)
-    print("RECOMMENDATIONS")
-    print("="*80)
-    
-    if len(extreme_negative) > 0:
-        pct = len(extreme_negative) / len(df) * 100
-        if pct > 10:
-            print(f"\n⚠️  HIGH OUTLIER RATE: {pct:.1f}% of experiments are extreme negative")
-            print("   This suggests:")
-            print("   1. ZNE frequently makes things worse in your setup")
-            print("   2. Possible bug in ZNE implementation")
-            print("   3. Noise parameters might be too high")
-            print("   → Investigate root cause before filtering")
-        else:
-            print(f"\n✓ Moderate outlier rate: {pct:.1f}% extreme negative")
-            print("   These likely represent:")
-            print("   1. Near-zero baseline cases (division issues)")
-            print("   2. Rare simulation failures")
-            print("   3. Edge cases where ZNE fails")
-            print("   → Filtering is appropriate for main analysis")
-            print("   → Report outlier percentage in paper")
-    
-    if len(extreme_positive) > 0:
-        pct = len(extreme_positive) / len(df) * 100
-        print(f"\nℹ️  Extreme positive: {pct:.1f}% (ZNE worked unrealistically well)")
-        if pct > 5:
-            print("   → This is suspicious; check for simulation bugs")
-    
-    print("\n✓ Conclusion: Filter to [-2, 2] range is appropriate")
-    print("  Report in methods: 'We filtered {N} experiments ({X}%) with")
-    print("  |error_reduction| > 2, which represent rare edge cases or")
-    print("  numerical instabilities in the error calculation.'")
-
 def main():
     import sys
     

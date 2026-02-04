@@ -18,30 +18,11 @@ def analyze_metric_artifact(df):
     """
     Check if the counterintuitive noise pattern is due to metric choice.
     """
-    
-    print("\n" + "="*80)
-    print("INVESTIGATING: Higher network noise → better error reduction?")
-    print("="*80)
-    
+
     # Filter to distributed data only (partition > 1)
     if 'num_partitions_tested' in df.columns:
         df = df[df['num_partitions_tested'] > 1].copy()
         print(f"\nUsing {len(df)} experiments (partition > 1 only)")
-    
-    # CRITICAL: Remove extreme outliers in error_reduction (same as analyze_results.py)
-    if 'error_reduction' in df.columns:
-        before = len(df)
-        print(f"\n--- Data Quality Check ---")
-        print(f"  Original error_reduction range: [{df['error_reduction'].min():.4f}, {df['error_reduction'].max():.4f}]")
-        extreme_low = (df['error_reduction'] < -2.0).sum()
-        extreme_high = (df['error_reduction'] > 2.0).sum()
-        print(f"    Extreme negative (<-2.0): {extreme_low} ({extreme_low/len(df)*100:.1f}%)")
-        print(f"    Extreme positive (>2.0): {extreme_high} ({extreme_high/len(df)*100:.1f}%)")
-        
-        df = df[(df['error_reduction'] >= -2.0) & (df['error_reduction'] <= 2.0)].copy()
-        after = len(df)
-        print(f"  Filtered out {before - after} extreme outliers")
-        print(f"  Retained: {after}/{before} ({after/before*100:.1f}%)")
     
     if 'communication_noise_multiplier' not in df.columns:
         print("ERROR: 'communication_noise_multiplier' column not found")
@@ -95,9 +76,6 @@ def analyze_metric_artifact(df):
         print(f"   → Higher noise correlates with WORSE baseline ✓")
     
     # Diagnosis
-    print("\n" + "="*80)
-    print("DIAGNOSIS")
-    print("="*80)
     
     if corr_relative > 0 and corr_absolute > 0 and corr_baseline > 0:
         print("\n✓ METRIC ARTIFACT CONFIRMED!")
@@ -112,7 +90,7 @@ def analyze_metric_artifact(df):
         print("   It means ZNE works harder on a worse baseline, but still delivers worse results.")
         
     elif corr_relative > 0 and corr_absolute < 0:
-        print("\n❓ UNEXPECTED: Higher noise yields both better relative AND absolute results")
+        print("\n⚠️ UNEXPECTED: Higher noise yields both better relative AND absolute results")
         print("   This would be genuinely counterintuitive and worth investigating further.")
         
     else:
@@ -200,7 +178,7 @@ def plot_relative_vs_absolute(df, output_dir='figures'):
     print(f"\n✓ Saved visualization: {filepath}")
     plt.close()
     
-    # Additional plot: Show the metric artifact explicitly
+    # Show the metric artifact explicitly
     fig, ax = plt.subplots(figsize=(10, 6))
     
     # Sample a few noise levels for clarity
@@ -272,31 +250,7 @@ def main():
     
     # Create visualizations
     plot_relative_vs_absolute(df)
-    
-    print("\n" + "="*80)
-    print("RECOMMENDATION FOR DISCUSSION SECTION")
-    print("="*80)
-    print("""
-The "counterintuitive" finding that higher network noise yields better error_reduction
-is likely a metric interpretation issue, not a genuine performance advantage.
 
-What's actually happening:
-  1. Higher network noise → worse baseline error (noisy_error ↑)
-  2. Higher network noise → worse final error (zne_error ↑)  
-  3. BUT: Higher network noise → larger RELATIVE improvement (error_reduction ↑)
-
-This is because error_reduction measures percentage improvement:
-  error_reduction = (noisy_error - zne_error) / noisy_error
-
-When the baseline is worse, there's more "room" for relative improvement,
-even though the absolute final result is still worse.
-
-RECOMMENDATION: Report BOTH metrics in your discussion:
-  - error_reduction (relative): shows ZNE's mitigation effectiveness
-  - zne_error (absolute): shows actual circuit fidelity
-
-This avoids misleading readers into thinking higher noise is beneficial.
-    """)
 
 if __name__ == "__main__":
     main()
