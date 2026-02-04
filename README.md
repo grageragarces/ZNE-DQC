@@ -3,8 +3,7 @@
 This repository contains the code and data used in the upcoming IEEE INFOCOM 2025 QUNAP publication:
 
 **Distributed Quantum Error Mitigation: Global and Local ZNE Encodings**  
-Maria Gragera Garces  
-Quantum Software Lab, University of Edinburgh  
+by Maria Gragera Garces  
 
 ## Paper Abstract
 
