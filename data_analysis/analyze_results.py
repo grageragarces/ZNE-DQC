@@ -204,8 +204,8 @@ def plot_baseline_validation(df_full, output_dir='figures'):
         ax.bar(positions, means, yerr=stds, alpha=0.7, capsize=5)
         ax.set_xticks(positions)
         ax.set_xticklabels([s.upper() for s in strategies])
-        ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
-        # ax.set_title('Partition=1: Strategy Comparison\n(Should be identical)', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
+        # ax.set_title('Partition=1: Strategy Comparison\n(Should be identical)', fontsize=15, fontweight='bold')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5)
         ax.grid(True, alpha=0.3, axis='y')
     
@@ -214,15 +214,15 @@ def plot_baseline_validation(df_full, output_dir='figures'):
     ax.hist(df_baseline['error_reduction'], bins=20, alpha=0.7, edgecolor='black')
     ax.axvline(df_baseline['error_reduction'].mean(), color='red', 
               linestyle='--', linewidth=2, label=f"Mean: {df_baseline['error_reduction'].mean():.4f}")
-    ax.set_xlabel('Error Reduction', fontsize=12, fontweight='bold')
-    ax.set_ylabel('Frequency', fontsize=12, fontweight='bold')
-    # ax.set_title('Partition=1: Error Reduction Distribution\n(No Distribution)', fontsize=12, fontweight='bold')
+    ax.set_xlabel('Error Reduction', fontsize=15, fontweight='bold')
+    ax.set_ylabel('Frequency', fontsize=15, fontweight='bold')
+    # ax.set_title('Partition=1: Error Reduction Distribution\n(No Distribution)', fontsize=15, fontweight='bold')
     ax.legend()
     ax.grid(True, alpha=0.3, axis='y')
     
     plt.tight_layout()
     filepath = Path(output_dir) / 'fig0_baseline_validation_partition1.png'
-    plt.savefig(filepath, dpi=300, bbox_inches='tight')
+    plt.savefig(filepath, bbox_inches='tight')
     print(f"\n✓ Saved: {filepath}")
     plt.close()
 
@@ -247,8 +247,8 @@ def plot_scalability(df, output_dir='figures'):
         ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
         ax.fill_between(x, y-err, y+err, alpha=0.2)
     
-    ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
-    ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
+    ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
+    ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
     # ax.set_title('Scalability: Error Reduction vs Partitions', fontsize=14, fontweight='bold')
     ax.legend(loc='best', frameon=True, shadow=True)
     ax.grid(True, alpha=0.3)
@@ -257,7 +257,7 @@ def plot_scalability(df, output_dir='figures'):
     
     plt.tight_layout()
     filepath = Path(output_dir) / 'fig1a_error_reduction_vs_partitions.png'
-    plt.savefig(filepath, dpi=300, bbox_inches='tight')
+    plt.savefig(filepath, bbox_inches='tight')
     print(f"✓ Saved: {filepath}")
     plt.close()
     
@@ -274,8 +274,8 @@ def plot_scalability(df, output_dir='figures'):
         ax.plot(x, y, marker='s', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
         ax.fill_between(x, y-err, y+err, alpha=0.2)
     
-    ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
-    ax.set_ylabel('ZNE Error', fontsize=12, fontweight='bold')
+    ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
+    ax.set_ylabel('ZNE Error', fontsize=15, fontweight='bold')
     # ax.set_title('Absolute Error vs Partitions', fontsize=14, fontweight='bold')
     ax.legend(loc='best', frameon=True, shadow=True)
     ax.grid(True, alpha=0.3)
@@ -283,7 +283,7 @@ def plot_scalability(df, output_dir='figures'):
     
     plt.tight_layout()
     filepath = Path(output_dir) / 'fig1b_absolute_error_vs_partitions.png'
-    plt.savefig(filepath, dpi=300, bbox_inches='tight')
+    plt.savefig(filepath, bbox_inches='tight')
     print(f"✓ Saved: {filepath}")
     plt.close()
     
@@ -297,8 +297,8 @@ def plot_scalability(df, output_dir='figures'):
             ax.plot(grouped.index, grouped.values, marker='^', linewidth=2.5, markersize=8, 
                    label=strategy.upper(), alpha=0.8)
         
-        ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Depth Overhead (ratio)', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
+        ax.set_ylabel('Depth Overhead (ratio)', fontsize=15, fontweight='bold')
         # ax.set_title('Circuit Depth Penalty', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
@@ -307,7 +307,7 @@ def plot_scalability(df, output_dir='figures'):
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig1c_depth_overhead_vs_partitions.png'
-        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
     
@@ -327,8 +327,8 @@ def plot_scalability(df, output_dir='figures'):
             ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
             ax.fill_between(x, y-err, y+err, alpha=0.2)
         
-        ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
         # ax.set_title('Network Noise Resistance', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
@@ -336,7 +336,7 @@ def plot_scalability(df, output_dir='figures'):
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig2a_network_noise_resistance.png'
-        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
         
@@ -380,13 +380,13 @@ def plot_scalability(df, output_dir='figures'):
         sns.heatmap(pivot_global, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
                    ax=ax, cbar_kws={'label': 'Error Reduction'}, 
                    vmin=-0.1, vmax=0.2)
-        ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Number of Partitions', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
+        ax.set_ylabel('Number of Partitions', fontsize=15, fontweight='bold')
         # ax.set_title('Error Reduction Heatmap: Global ZNE', fontsize=14, fontweight='bold')
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig2b_error_reduction_heatmap_global.png'
-        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
         
@@ -395,13 +395,13 @@ def plot_scalability(df, output_dir='figures'):
         sns.heatmap(pivot_local, annot=True, fmt='.3f', cmap='RdYlGn', center=0,
                    ax=ax, cbar_kws={'label': 'Error Reduction'}, 
                    vmin=-0.1, vmax=0.2)
-        ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Number of Partitions', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
+        ax.set_ylabel('Number of Partitions', fontsize=15, fontweight='bold')
         # ax.set_title('Error Reduction Heatmap: Local ZNE', fontsize=14, fontweight='bold')
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig2c_error_reduction_heatmap_local.png'
-        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
 
@@ -422,8 +422,8 @@ def plot_scalability(df, output_dir='figures'):
             ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
             ax.fill_between(x, y-err, y+err, alpha=0.2)
         
-        ax.set_xlabel('Local Noise Level', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Local Noise Level', fontsize=15, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
         # ax.set_title('Performance vs Local Noise', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
@@ -431,7 +431,7 @@ def plot_scalability(df, output_dir='figures'):
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig3a_performance_vs_local_noise.png'
-        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
         
@@ -439,15 +439,15 @@ def plot_scalability(df, output_dir='figures'):
         fig, ax = plt.subplots(figsize=(8, 6))
         df_plot = df[['strategy', 'error_reduction']].copy()
         sns.boxplot(data=df_plot, x='strategy', y='error_reduction', ax=ax, palette='Set2')
-        ax.set_xlabel('Strategy', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Strategy', fontsize=15, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
         # ax.set_title('Strategy Performance Distribution', fontsize=14, fontweight='bold')
         ax.axhline(y=0, color='red', linestyle='--', alpha=0.5, linewidth=1.5)
         ax.grid(True, alpha=0.3, axis='y')
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig3b_strategy_performance_distribution.png'
-        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
     
@@ -469,8 +469,8 @@ def plot_scalability(df, output_dir='figures'):
             ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=family.upper(), alpha=0.8)
             ax.fill_between(x, y-err, y+err, alpha=0.2)
         
-        ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
+        ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
         # ax.set_title('Performance by Algorithm Family', fontsize=14, fontweight='bold')
         ax.legend(loc='best', frameon=True, shadow=True)
         ax.grid(True, alpha=0.3)
@@ -479,7 +479,7 @@ def plot_scalability(df, output_dir='figures'):
         
         plt.tight_layout()
         filepath = Path(output_dir) / 'fig4a_performance_by_algorithm_family.png'
-        plt.savefig(filepath, dpi=300, bbox_inches='tight')
+        plt.savefig(filepath, bbox_inches='tight')
         print(f"✓ Saved: {filepath}")
         plt.close()
         
@@ -503,8 +503,8 @@ def plot_scalability(df, output_dir='figures'):
                            label=strategy.upper(), alpha=0.8)
                     ax.fill_between(x, y-err, y+err, alpha=0.2)
             
-            ax.set_xlabel('Number of Partitions', fontsize=12, fontweight='bold')
-            ax.set_ylabel('Error Reduction', fontsize=12, fontweight='bold')
+            ax.set_xlabel('Number of Partitions', fontsize=15, fontweight='bold')
+            ax.set_ylabel('Error Reduction', fontsize=15, fontweight='bold')
             # ax.set_title(f'Strategy Comparison: {family.upper()} Circuits', fontsize=14, fontweight='bold')
             ax.legend(loc='best', frameon=True, shadow=True)
             ax.grid(True, alpha=0.3)
@@ -513,7 +513,7 @@ def plot_scalability(df, output_dir='figures'):
             
             plt.tight_layout()
             filepath = Path(output_dir) / f'fig4{chr(98+idx)}_strategy_comparison_{family}.png'
-            plt.savefig(filepath, dpi=300, bbox_inches='tight')
+            plt.savefig(filepath, bbox_inches='tight')
             print(f"✓ Saved: {filepath}")
             plt.close()
 
@@ -601,8 +601,8 @@ def plot_dual_metric_network_noise(df, output_dir='figures'):
         ax.plot(x, y, marker='o', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
         ax.fill_between(x, y-err, y+err, alpha=0.2)
     
-    ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
-    ax.set_ylabel('Error Reduction (Relative)', fontsize=12, fontweight='bold')
+    ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
+    ax.set_ylabel('Error Reduction (Relative)', fontsize=15, fontweight='bold')
     ax.set_title('(a) Relative Improvement', fontsize=13, fontweight='bold')
     ax.legend(loc='best', frameon=True, shadow=True, fontsize=10)
     ax.grid(True, alpha=0.3)
@@ -623,8 +623,8 @@ def plot_dual_metric_network_noise(df, output_dir='figures'):
         ax.plot(x, y, marker='s', linewidth=2.5, markersize=8, label=strategy.upper(), alpha=0.8)
         ax.fill_between(x, y-err, y+err, alpha=0.2)
     
-    ax.set_xlabel('Communication Noise Multiplier', fontsize=12, fontweight='bold')
-    ax.set_ylabel('ZNE Error (Absolute)', fontsize=12, fontweight='bold')
+    ax.set_xlabel('Communication Noise Multiplier', fontsize=15, fontweight='bold')
+    ax.set_ylabel('ZNE Error (Absolute)', fontsize=15, fontweight='bold')
     ax.set_title('(b) Absolute Final Error', fontsize=13, fontweight='bold')
     ax.legend(loc='best', frameon=True, shadow=True, fontsize=10)
     ax.grid(True, alpha=0.3)
@@ -634,7 +634,7 @@ def plot_dual_metric_network_noise(df, output_dir='figures'):
     plt.tight_layout()
     
     filepath = Path(output_dir) / 'fig2_dual_metric_network_noise.png'
-    plt.savefig(filepath, dpi=300, bbox_inches='tight')
+    plt.savefig(filepath, bbox_inches='tight')
     print(f"✓ Saved: {filepath}")
     plt.close()
     
